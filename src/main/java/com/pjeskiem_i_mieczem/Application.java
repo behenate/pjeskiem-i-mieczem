@@ -2,6 +2,7 @@ package com.pjeskiem_i_mieczem;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -9,8 +10,9 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        ImageButton testButton = new ImageButton("Testowy teścik", 300, 100, "buttons/button_0.png");
+        WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui();
+        Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
