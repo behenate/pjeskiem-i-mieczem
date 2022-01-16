@@ -12,19 +12,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class CreateCharacterGui extends VBox {
-    private Player magePreset = new Player("Mag", 1,1,1,1,1,"mage.png");
-    private Player warriorPreset = new Player("Wojownik", 1,1,1,1,1,"wojownik.png");
-    private Player hunterPreset = new Player("Łowca", 1,1,1,1,1,"łowca.png");
 
     private Image classImage;
     private ImageView classImageView = new ImageView();
-    private VBox statsBox = new VBox();
-    private Label classNameLabel = new Label();
+    private final VBox statsBox = new VBox();
+    private final Label classNameLabel = new Label();
     private int current_class = 0;
 
 
 
     public CreateCharacterGui(){
+        Player hunterPreset = new Player("Łowca", 1, 1, 1, 1, 1, "łowca.png");
+        Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "wojownik.png");
+        Player magePreset = new Player("Mag", 3, 3, 3, 3, 3, "mage.png");
         Player[] classPresets = {warriorPreset, hunterPreset, magePreset};
 
         //        Setup sizes
@@ -34,7 +34,7 @@ public class CreateCharacterGui extends VBox {
         int navigationButtonWidth = (int)(Config.windowWidth*0.1);
         int navigationButtonHeight = (int)(Config.windowHeight*0.05);
         int classImageSize = (int)(Config.windowHeight*0.3);
-        int inputWidth = (int)(Config.windowWidth*0.2);
+        int prefWidth = (int)(Config.windowWidth*0.2);
 
 //        Setup gui elemets
         Text titleText = new Text("STWÓRZ \n \t PJESA");
@@ -50,8 +50,9 @@ public class CreateCharacterGui extends VBox {
 //        Apply sizes
         classImageView.setFitWidth(classImageSize);
         classImageView.setFitHeight(classImageSize);
-        characterNameField.setMaxWidth(inputWidth);
-        classNameLabel.setPrefWidth(inputWidth);
+        characterNameField.setMaxWidth(prefWidth);
+        classNameLabel.setPrefWidth(prefWidth - 2*arrowButtonSize);
+        characterNameField.setFont(Font.font(Config.windowWidth*0.012));
 
 //        Setup events
         prevClassButton.setOnAction((event)->{
@@ -70,12 +71,16 @@ public class CreateCharacterGui extends VBox {
 
 //        Load the first character
         setCharacter(classPresets[0]);
+
 //        Add the gui elements to containers and base class
         HBox buttonsAndClassnameContainer = new HBox(prevClassButton, classNameLabel, nextClassButton);
-        VBox container = new VBox(titleText, characterNameLabel, characterNameField, buttonsAndClassnameContainer, classImageView, statsBox, continueButton);
+        statsBox.getChildren().addAll(buttonsAndClassnameContainer);
+        VBox container = new VBox(titleText, characterNameLabel, characterNameField, buttonsAndClassnameContainer, classImageView,statsBox, continueButton);
 
         //      Setup alignments
         container.setAlignment(Pos.CENTER);
+        statsBox.setAlignment(Pos.CENTER);
+        statsBox.setMaxWidth(prefWidth);
         buttonsAndClassnameContainer.setAlignment(Pos.CENTER);
         characterNameField.setAlignment(Pos.CENTER);
         classNameLabel.setAlignment(Pos.CENTER);
@@ -86,8 +91,7 @@ public class CreateCharacterGui extends VBox {
     private void setCharacter(Player character){
         classImageView.setImage(character.classImage);
         classNameLabel.setText(character.className);
-        statsBox = new VBox(
-                new Label("hp: " + character.hp)
-        );
+        statsBox.getChildren().clear();
+        statsBox.getChildren().add(character.getStatsView());
     }
 }
