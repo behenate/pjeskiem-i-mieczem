@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Player {
-    protected String playerName;
+    protected String name;
     protected String className;
     protected Statistic hp;
     protected Statistic endurance;
@@ -30,7 +30,7 @@ public class Player {
         this.classImage = new Image(imagePath);
         this.classImageView = new ImageView(this.classImage);
     }
-    public void setPlayerName(String playerName){
-        this.playerName = playerName;
+    public void setName(String name){
+        this.name = name;
     }
 }
