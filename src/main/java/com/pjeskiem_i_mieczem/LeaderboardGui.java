@@ -10,6 +10,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class LeaderboardGui extends VBox {
     public LeaderboardGui(){
 //      Setup sizes
@@ -19,17 +23,10 @@ public class LeaderboardGui extends VBox {
         int buttonHeight = (int)(Config.windowHeight*0.1);
 
 
-
 //      Setup gui elemets
         Text titleText = new Text("Ranking");
         titleText.setFont(Font.font("Z003",50));
 
-//      Setup table
-        TableColumn<String, String> column1 = new TableColumn<>("Name");
-        column1.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        TableColumn<String, String> column2 = new TableColumn<>("Score");
-        column2.setCellValueFactory(new PropertyValueFactory<>("score"));
 
 //      Set the column resize policy to constrained resize policy
         HBox table = this.uploadTable();
@@ -53,20 +50,33 @@ public class LeaderboardGui extends VBox {
 
     public HBox uploadTable(){
         VBox scores = new VBox();
-        scores.setAlignment(Pos.CENTER_RIGHT);
+        scores.setAlignment(Pos.TOP_RIGHT);
         VBox names = new VBox();
-        int dataQuantity = 12;
-        for(int i=1; i<dataQuantity; i++){
-            Label name = new Label("gracz "+i);
-            name.setFont(Font.font("Z003",20));
-            names.getChildren().add(name);
-
-            Label score = new Label(""+i+"pkt");
-            score.setFont(Font.font("Z003",20));
-            scores.getChildren().add(score);
+        names.setAlignment(Pos.TOP_LEFT);
+        try {
+            String line;
+            String[] array;
+            Scanner scanner = new Scanner(new File("src/main/resources/leaderboard/scoreData.txt"));
+            while (scanner.hasNextLine()) {
+                System.out.println("Siema");
+                line = scanner.nextLine();
+                array = line.split(";");
+                Label name = new Label(array[0]);
+                name.setFont(Font.font("Z003",20));
+                Label score = new Label(array[1]);
+                score.setFont(Font.font("Z003",20));
+                names.getChildren().add(name);
+                scores.getChildren().add(score);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         HBox table = new HBox(names, scores);
         table.setSpacing(15);
+        table.setAlignment(Pos.TOP_CENTER);
+        table.setMinHeight(400);
+        table.setMaxHeight(500);
         return table;
     }
 
