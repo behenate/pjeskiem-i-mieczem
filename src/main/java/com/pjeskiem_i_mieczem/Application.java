@@ -12,7 +12,9 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         ImageButton testButton = new ImageButton("Testowy teścik", 300, 100, "buttons/button_0.png");
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui();
-        Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
+        LeaderboardGui leaderboardGui = new LeaderboardGui();
+        Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
