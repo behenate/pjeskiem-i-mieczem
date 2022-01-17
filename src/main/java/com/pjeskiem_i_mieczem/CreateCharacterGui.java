@@ -1,6 +1,5 @@
 package com.pjeskiem_i_mieczem;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,9 +21,9 @@ public class CreateCharacterGui extends VBox {
 
 
     public CreateCharacterGui(){
-        Player hunterPreset = new Player("Łowca", 1, 1, 1, 1, 1, "łowca.png");
-        Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "wojownik.png");
-        Player magePreset = new Player("Mag", 3, 3, 3, 3, 3, "mage.png");
+        Player hunterPreset = new Hunter();
+        Player warriorPreset = new Warrior();
+        Player magePreset = new Mage();
         Player[] classPresets = {warriorPreset, hunterPreset, magePreset};
 
         //        Setup sizes
@@ -89,7 +88,7 @@ public class CreateCharacterGui extends VBox {
         this.getChildren().add(container);
     }
     private void setCharacter(Player character){
-        classImageView.setImage(character.classImage);
+        classImageView.setImage(character.image);
         classNameLabel.setText(character.className);
         statsBox.getChildren().clear();
         statsBox.getChildren().add(character.getStatsView());
