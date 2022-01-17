@@ -14,9 +14,11 @@ public class Application extends javafx.application.Application {
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui();
         CreateCharacterGui createCharacterGui = new CreateCharacterGui();
         LeaderboardGui leaderboardGui = new LeaderboardGui();
+        CityViewGui cityViewGui = new CityViewGui();
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
-        Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
+        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
