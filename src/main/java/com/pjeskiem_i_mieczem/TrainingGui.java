@@ -81,13 +81,14 @@ public class TrainingGui extends VBox {
                 valueLabel.setText(newValue + "");
                 stats[index] = valueLabel.getText();
                 this.availablePoints--;
-                this.availablePointsLabel.setText("Masz do wykorzystania: " + this.availablePoints + " punktów");
+                this.availablePointsLabel.setText("Masz do wykorzystania: "+this.availablePoints+" punktów");
+                // muszę tę opcję dopracować jeszcze bo nie działa tak jak chcę
             }else if(this.availablePoints == 0 && !this.flag){
                 this.flag = true;
                 this.getChildren().add(cityButton);
             }
         });
-//      add everything to a container
+//      Add everything to a container
         box.getChildren().addAll(nameLabel, valueLabel, improveButton);
         box.setAlignment(Pos.CENTER);
         return box;

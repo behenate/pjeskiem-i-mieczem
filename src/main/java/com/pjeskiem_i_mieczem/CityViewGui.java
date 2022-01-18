@@ -13,7 +13,7 @@ public class CityViewGui extends VBox {
         this.player = player;
         makeGrid();
         this.getChildren().addAll(grid);
-        this.setBack("backgrounds/cityView.png");
+        this.setBack();
     }
 
     private void makeGrid(){
@@ -63,14 +63,14 @@ public class CityViewGui extends VBox {
         grid.add(chillButton, 5, 6, 1, 1);
     }
 
-    private void setBack(String path){
+    private void setBack(){
         BackgroundSize backgroundSize = new BackgroundSize(900,
                 700,
                 true,
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image(path),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/cityView.png"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
