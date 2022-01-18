@@ -1,5 +1,7 @@
 package com.pjeskiem_i_mieczem;
 
+import com.pjeskiem_i_mieczem.Config;
+import com.pjeskiem_i_mieczem.ImageButton;
 import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;

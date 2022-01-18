@@ -1,5 +1,7 @@
 package com.pjeskiem_i_mieczem;
 
+import com.pjeskiem_i_mieczem.Config;
+import com.pjeskiem_i_mieczem.Player;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;

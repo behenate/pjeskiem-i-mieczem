@@ -1,8 +1,6 @@
 package com.pjeskiem_i_mieczem;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,20 +16,16 @@ public class Application extends javafx.application.Application {
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui();
         CreateCharacterGui createCharacterGui = new CreateCharacterGui();
         LeaderboardGui leaderboardGui = new LeaderboardGui();
-<<<<<<< HEAD
-        CityViewGui cityViewGui = new CityViewGui();
+        CityViewGui cityViewGui = new CityViewGui(new Player("Adam", 100));
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
         //Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
-        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Hello!");
-=======
         FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
-        Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Pjeskiem I Mieczem");
->>>>>>> 8ea06017c9c4a06aa059a7e6d0c95e5d927d9053
         stage.setScene(scene);
         stage.show();
     }

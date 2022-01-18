@@ -1,5 +1,6 @@
 package com.pjeskiem_i_mieczem;
 
+import com.pjeskiem_i_mieczem.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

@@ -1,10 +1,9 @@
 package com.pjeskiem_i_mieczem;
-
+import com.pjeskiem_i_mieczem.Config;
+import com.pjeskiem_i_mieczem.ImageButton;
+import com.pjeskiem_i_mieczem.Player;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;

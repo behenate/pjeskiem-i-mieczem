@@ -30,12 +30,9 @@ public class Player {
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
         this.imagePath = imagePath;
-<<<<<<< HEAD
         this.gold = 500;
         this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
-=======
         this.hp = new Statistic("Temp HP", this.endurance.getValue()*1);
->>>>>>> 8ea06017c9c4a06aa059a7e6d0c95e5d927d9053
         setImagePath(imagePath);
     }
 //  minimalistic constructor to test sth
@@ -70,5 +67,9 @@ public class Player {
         VBox playerCard = new VBox(playerNameLabel, imageView, healthBar, statCard);
         playerCard.setAlignment(Pos.CENTER);
         return playerCard;
+    }
+
+    public int getGold(){
+        return this.gold;
     }
 }

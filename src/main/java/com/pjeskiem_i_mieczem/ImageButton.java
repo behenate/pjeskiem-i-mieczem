@@ -19,6 +19,7 @@ public class ImageButton extends Button {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 BackgroundSize.DEFAULT);
         this.setBackground(new Background(myBI));
+        //this.setStyle("-fx-background-color: rgba(196,38,128,0.5) ");
         this.setPrefWidth(width);
         this.setPrefHeight(height);
 
