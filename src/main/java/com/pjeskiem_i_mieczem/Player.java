@@ -12,6 +12,7 @@ public class Player {
     protected String name;
     protected String className;
     protected Statistic hp;
+    protected int gold;
     protected Statistic endurance;
     protected Statistic strength;
     protected Statistic dexterity;
@@ -29,8 +30,18 @@ public class Player {
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
         this.imagePath = imagePath;
+<<<<<<< HEAD
+        this.gold = 500;
+        this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
+=======
         this.hp = new Statistic("Temp HP", this.endurance.getValue()*1);
+>>>>>>> 8ea06017c9c4a06aa059a7e6d0c95e5d927d9053
         setImagePath(imagePath);
+    }
+//  minimalistic constructor to test sth
+    public Player(String name, int gold){
+        this.name = name;
+        this.gold = gold;
     }
     public void setImagePath(String imagePath){
         this.image = new Image(imagePath);

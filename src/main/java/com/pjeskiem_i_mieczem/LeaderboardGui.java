@@ -10,8 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class LeaderboardGui extends VBox {
@@ -27,11 +26,7 @@ public class LeaderboardGui extends VBox {
         Text titleText = new Text("Ranking");
         titleText.setFont(Font.font("Z003",50));
 
-
-//      Set the column resize policy to constrained resize policy
         HBox table = this.uploadTable();
-        table.setMaxWidth(200);
-        table.setAlignment(Pos.CENTER);
 
         ImageButton menuButton = new ImageButton("Wróć do menu", buttonWidth, buttonHeight, "buttons/button_0.png");
 
@@ -58,7 +53,6 @@ public class LeaderboardGui extends VBox {
             String[] array;
             Scanner scanner = new Scanner(new File("src/main/resources/leaderboard/scoreData.txt"));
             while (scanner.hasNextLine()) {
-                System.out.println("Siema");
                 line = scanner.nextLine();
                 array = line.split(";");
                 Label name = new Label(array[0]);
@@ -81,9 +75,16 @@ public class LeaderboardGui extends VBox {
     }
 
 
-    //public void addnewData(Player player){
-    //    tableView.getItems().add();
-    //}
+    public void saveToLeaderboard(Player player) {
+        try{
+            FileWriter file = new FileWriter("src/main/resources/leaderboard/scoreData.txt", true);
+            BufferedWriter save = new BufferedWriter(file);
+            save.write(player.name+";"+player.gold);
+            save.close();
+        } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
 
 
 }
