@@ -17,10 +17,12 @@ public class Application extends javafx.application.Application {
         CreateCharacterGui createCharacterGui = new CreateCharacterGui();
         LeaderboardGui leaderboardGui = new LeaderboardGui();
         CityViewGui cityViewGui = new CityViewGui(new Player("Adam", 100));
+        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4);
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
         //Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
-        Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
         //Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
         stage.setTitle("Hello!");
         FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);

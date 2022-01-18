@@ -39,6 +39,13 @@ public class Player {
     public Player(String name, int gold){
         this.name = name;
         this.gold = gold;
+        this.hp = new Statistic("Hp", 123);
+        this.endurance = new Statistic("Wytrzymałość",10);
+        this.strength = new Statistic("Siła",18);
+        this.dexterity = new Statistic("Zręczność", 22);
+        this.intelligence = new Statistic("Inteligencja", 9);
+        this.luck = new Statistic("Szczęście", 77);
+        setImagePath("zloty.jpg");
     }
     public void setImagePath(String imagePath){
         this.image = new Image(imagePath);

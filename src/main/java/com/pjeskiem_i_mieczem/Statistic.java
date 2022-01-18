@@ -16,10 +16,11 @@ public class Statistic{
     public int getValue(){
         return value;
     }
+    public String getName(){return name;}
     public void setValue(int value){
         this.value = value;
     }
-    public Node getLabel(){
+    public HBox getLabel(){
         Label nameLabel = new Label(this.name+":");
         nameLabel.setPrefWidth(Config.windowWidth*0.15);
         Label valueLabel = new Label(""+this.value);

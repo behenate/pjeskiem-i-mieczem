@@ -69,10 +69,10 @@ public class CreateCharacterGui extends VBox {
             System.out.println("Continue");
         });
 
-//        Load the first character
+//      Load the first character
         setCharacter(classPresets[0]);
 
-//        Add the gui elements to containers and base class
+//      Add the gui elements to containers and base class
         HBox buttonsAndClassnameContainer = new HBox(prevClassButton, classNameLabel, nextClassButton);
         statsBox.getChildren().addAll(buttonsAndClassnameContainer);
         VBox container = new VBox(titleText, characterNameLabel, characterNameField, buttonsAndClassnameContainer, classImageView,statsBox, continueButton);
