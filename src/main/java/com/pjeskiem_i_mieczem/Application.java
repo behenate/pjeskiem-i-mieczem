@@ -6,37 +6,66 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
+    Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
-        Player hunterPreset = new Player("Łowca", 2, 2, 2, 100, 2, "dino.jpg");
-        hunterPreset.setName("Dino");
-        Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "zloty.jpg");
-        warriorPreset.setName("Złoty");
-        ImageButton testButton = new ImageButton("Testowy teścik", 300, 100, "buttons/button_0.png");
-        WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui();
-        CreateCharacterGui createCharacterGui = new CreateCharacterGui();
-        LeaderboardGui leaderboardGui = new LeaderboardGui();
-        CityViewGui cityViewGui = new CityViewGui(new Player("Adam", 100));
-        FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
-        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4);
-        FailureGui failureGui = new FailureGui(new Player("Adam", 1000), leaderboardGui);
-        VictoryGui victoryGui = new VictoryGui(new Player("Adam", 1000));
+        this.stage = stage;
+
+        WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
+        CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
+        LeaderboardGui leaderboardGui = new LeaderboardGui(this);
+        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4, this);
+        FailureGui failureGui = new FailureGui(new Player("Adam", 1000), leaderboardGui, this);
+        VictoryGui victoryGui = new VictoryGui(new Player("Adam", 1000), this);
+
         //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
         //Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
-        Scene scene = new Scene(victoryGui);
-        stage.setTitle("Hello!");
-        stage.setTitle("Pjeskiem I Mieczem");
-        stage.setScene(scene);
-        stage.show();
+        Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(victoryGui);
+        this.stage.setTitle("Hello!");
+        this.stage.setTitle("Pjeskiem I Mieczem");
+        this.stage.setScene(scene);
+        this.stage.show();
     }
 
     public static void main(String[] args) {
         launch();
     }
+
+
+    public void goToTheCity(){
+        CityViewGui cityViewGui = new CityViewGui(new Player("Adam", 100), this);
+        Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToTheArena(){
+        Player hunterPreset = new Player("Łowca", 2, 2, 2, 100, 2, "dino.jpg");
+        hunterPreset.setName("Dino");
+        Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "zloty.jpg");
+        warriorPreset.setName("Złoty");
+        FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
+        Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToTheStart(){
+        WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
+        Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToTheTraining(){
+        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4, this);
+        Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToTheLeaderboard(){
+        LeaderboardGui leaderboardGui = new LeaderboardGui(this);
+        Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+
 }

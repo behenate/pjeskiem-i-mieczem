@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class VictoryGui extends VBox{
-    public VictoryGui(Player player){
+    public VictoryGui(Player player, Application main){
 //      Setup size
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowHeight);
@@ -29,7 +29,9 @@ public class VictoryGui extends VBox{
 //      Setup buttons
         //jakiś błąd z zapisem do rankingu (!!!)
         ImageButton cityButton = new ImageButton("Przejdź do miasta", buttonWidth, buttonHeight, "buttons/button_1.png");
-
+        cityButton.setOnAction((event)->{
+            main.goToTheCity();
+        });
         HBox buttons = new HBox(15);
         buttons.getChildren().addAll(cityButton);
         buttons.setAlignment(Pos.CENTER);

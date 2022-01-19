@@ -19,7 +19,7 @@ public class TrainingGui extends VBox {
     private boolean flag = false;
     private Label availablePointsLabel;
 
-    public TrainingGui(Player player, int pointsValue){
+    public TrainingGui(Player player, int pointsValue, Application app){
         this.player = player;
         this.availablePoints = pointsValue;
 //      Setup sizes
@@ -38,7 +38,6 @@ public class TrainingGui extends VBox {
         int cityButtonWidth = (int) (Config.windowWidth * 0.2);
         int cityButtonHeight = (int) (Config.windowWidth * 0.05);
         cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png" );
-
         availablePointsLabel = new Label("Masz do wykorzystania: "+this.availablePoints+" punktów");
         availablePointsLabel.setFont(Font.font("Z003",25));
 
@@ -51,6 +50,8 @@ public class TrainingGui extends VBox {
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(container);
 
+
+
 //      Setup action of going to the city (without changing window)
         cityButton.setOnAction((event)->{
             if(stats[0] != null) player.hp.setValue(Integer.parseInt(stats[0]));
@@ -59,6 +60,7 @@ public class TrainingGui extends VBox {
             if(stats[3] != null) player.dexterity.setValue(Integer.parseInt(stats[3]));
             if(stats[4] != null) player.endurance.setValue(Integer.parseInt(stats[4]));
             if(stats[5] != null) player.luck.setValue(Integer.parseInt(stats[5]));
+            app.goToTheCity();
         });
     }
 
@@ -81,11 +83,11 @@ public class TrainingGui extends VBox {
                 valueLabel.setText(newValue + "");
                 stats[index] = valueLabel.getText();
                 this.availablePoints--;
-                this.availablePointsLabel.setText("Masz do wykorzystania: "+this.availablePoints+" punktów");
-                // muszę tę opcję dopracować jeszcze bo nie działa tak jak chcę
-            }else if(this.availablePoints == 0 && !this.flag){
-                this.flag = true;
-                this.getChildren().add(cityButton);
+                this.availablePointsLabel.setText("Masz do wykorzystania: " + this.availablePoints + " punktów");
+                if(this.availablePoints == 0 && !this.flag){
+                    this.flag = true;
+                    this.getChildren().add(cityButton);
+                }
             }
         });
 //      Add everything to a container

@@ -8,8 +8,10 @@ import javafx.scene.text.Text;
 public class CityViewGui extends VBox {
     GridPane grid = new GridPane();
     Player player;
+    Application app;
 
-    public CityViewGui(Player player){
+    public CityViewGui(Player player, Application app){
+        this.app = app;
         this.player = player;
         makeGrid();
         this.getChildren().addAll(grid);
@@ -40,25 +42,41 @@ public class CityViewGui extends VBox {
             grid.add(gold, 15, 10, 1, 1);
         }
 
-//      Setup buttons
+//      Setup buttons and their sizes
         ImageButton arenaButton = new ImageButton("Idź na arenę", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_left.png");
         ImageButton chillButton = new ImageButton("Idź na suczki", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_right.png");
         ImageButton trainingButton = new ImageButton("Idź na trening", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_right.png");
-        ImageButton exitButton = new ImageButton("Exit", buttonWidth, buttonHeight,
+        ImageButton menuButton = new ImageButton("Idź do menu", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_left.png");
         arenaButton.setMinWidth(buttonWidth);
         chillButton.setMinWidth(buttonWidth);
         trainingButton.setMinWidth(buttonWidth);
-        exitButton.setMinWidth(buttonWidth);
+        menuButton.setMinWidth(buttonWidth);
 
+//      Setup buttons actions
+        arenaButton.setOnAction((event)->{
+            app.goToTheArena();
+        });
+        chillButton.setOnAction((event)->{
+            System.out.println("Zaraz ci zabiore zlotooooo");
+        });
+        trainingButton.setOnAction((event)->{
+            app.goToTheTraining();
+        });
+        trainingButton.setOnAction((event)->{
+            app.goToTheTraining();
+        });
+        menuButton.setOnAction((event)->{
+            app.goToTheStart();
+        });
         //grid.setGridLinesVisible(true);
 //      add elements to grid
         grid.add(titleText, 7, 0, 1, 2);
         grid.add(arenaButton, 3, 5, 1, 1);
-        grid.add(exitButton, 3, 6, 1, 1);
+        grid.add(menuButton, 3, 6, 1, 1);
         grid.add(trainingButton, 5, 5, 1, 2);
         grid.add(chillButton, 5, 6, 1, 1);
     }

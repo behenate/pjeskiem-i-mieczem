@@ -12,16 +12,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class CreateCharacterGui extends VBox {
-
     private Image classImage;
     private ImageView classImageView = new ImageView();
     private final VBox statsBox = new VBox();
     private final Label classNameLabel = new Label();
     private int current_class = 0;
 
-
-
-    public CreateCharacterGui(){
+    public CreateCharacterGui(Application app){
         Player hunterPreset = new Hunter();
         Player warriorPreset = new Warrior();
         Player magePreset = new Mage();
@@ -66,7 +63,7 @@ public class CreateCharacterGui extends VBox {
             setCharacter(classPresets[Math.abs(current_class)]);
         });
         continueButton.setOnAction((event)->{
-            System.out.println("Continue");
+            app.goToTheCity();
         });
 
 //      Load the first character

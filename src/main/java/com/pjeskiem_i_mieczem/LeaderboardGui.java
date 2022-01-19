@@ -13,7 +13,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class LeaderboardGui extends VBox {
-    public LeaderboardGui(){
+    public LeaderboardGui(Application app){
 //      Setup sizes
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
@@ -31,7 +31,7 @@ public class LeaderboardGui extends VBox {
 
 //      Setup events
         menuButton.setOnAction((event)->{
-            System.out.println("Go go to menu!");
+            app.goToTheStart();
         });
 
         VBox container = new VBox(titleText, table, menuButton);
@@ -49,7 +49,7 @@ public class LeaderboardGui extends VBox {
         names.setAlignment(Pos.TOP_LEFT);
         try {
             String line;
-            String[] array;
+            String[] array = null;
             Scanner scanner = new Scanner(new File("src/main/resources/leaderboard/scoreData.txt"));
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
@@ -79,6 +79,7 @@ public class LeaderboardGui extends VBox {
             FileWriter file = new FileWriter("src/main/resources/leaderboard/scoreData.txt", true);
             BufferedWriter save = new BufferedWriter(file);
             save.write(player.name+";"+player.gold);
+            save.newLine();
             save.close();
         } catch (IOException e) {
         e.printStackTrace();

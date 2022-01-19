@@ -10,7 +10,7 @@ import javafx.scene.text.FontWeight;
 public class FailureGui extends VBox {
     private final LeaderboardGui leaderboardGui;
 
-    public FailureGui(Player player, LeaderboardGui leaderboard){
+    public FailureGui(Player player, LeaderboardGui leaderboard, Application app){
 //      Setup size
         this.leaderboardGui = leaderboard;
         this.setPrefWidth(Config.windowWidth);
@@ -33,7 +33,9 @@ public class FailureGui extends VBox {
             leaderboardGui.saveToLeaderboard(player);
         });
         ImageButton menuButton = new ImageButton("Zacznij od nowa", buttonWidth, buttonHeight, "buttons/button_1.png");
-
+        menuButton.setOnAction((event)->{
+            app.goToTheStart();
+        });
         HBox buttons = new HBox(15);
         buttons.getChildren().addAll(saveButton, menuButton);
         buttons.setAlignment(Pos.CENTER);

@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 // Class containing the Gui of the welcome screen
 public class WelcomeScreenGui extends HBox {
-    public WelcomeScreenGui(){
+    public WelcomeScreenGui(Application app){
 
 //        Setup sizes
         this.setPrefWidth(Config.windowWidth);
@@ -30,7 +30,10 @@ public class WelcomeScreenGui extends HBox {
 
 //        Setup events
         startButton.setOnAction((event)->{
-            System.out.println("Start App!");
+            app.goToTheCity();
+        });
+        leaderboardButton.setOnAction((event)->{
+            app.goToTheLeaderboard();
         });
         exitButton.setOnAction((event)->{
             System.exit(0);

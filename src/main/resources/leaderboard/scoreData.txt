@@ -1,7 +1,4 @@
-grzes;1000
-goodboi;345
-gdtes;3947
-jfhgf;846
-hdgfhf;6544
-bdhdir;9
-Stasiu;666Adam;100Adam;100Adam;100Adam;1000
+Stasiu;10
+Adam;1000
+Adam;1000
+Adam;1000
