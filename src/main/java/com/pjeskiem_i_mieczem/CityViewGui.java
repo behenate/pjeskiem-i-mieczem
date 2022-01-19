@@ -61,7 +61,7 @@ public class CityViewGui extends VBox {
             app.goToTheArena();
         });
         chillButton.setOnAction((event)->{
-            System.out.println("Zaraz ci zabiore zlotooooo");
+            this.chillOut();
         });
         trainingButton.setOnAction((event)->{
             app.goToTheTraining();
@@ -79,6 +79,11 @@ public class CityViewGui extends VBox {
         grid.add(menuButton, 3, 6, 1, 1);
         grid.add(trainingButton, 5, 5, 1, 2);
         grid.add(chillButton, 5, 6, 1, 1);
+    }
+
+    private void chillOut(){
+        this.player.gold -= 10;
+        this.player.hp.setValue(this.player.hp.getValue()+5);
     }
 
     private void setBack(){

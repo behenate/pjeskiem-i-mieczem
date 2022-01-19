@@ -21,7 +21,7 @@ public class WelcomeScreenGui extends HBox {
         int buttonWidth = (int) (Config.windowWidth*0.3);
         int buttonHeight = (int)(Config.windowHeight*0.1);
 
-//        Setup gui elemets
+//      Setup gui elemets
         Text titleText = new Text("PJESKIEM I \n \t MIECZEM \n");
         titleText.setFont(Font.font("Z003",50));
         ImageButton startButton = new ImageButton("Start", buttonWidth, buttonHeight, "buttons/button_0.png");

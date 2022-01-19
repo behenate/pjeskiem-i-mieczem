@@ -1,4 +1,4 @@
 Stasiu;10
 Adam;1000
-Adam;1000
-Adam;1000
+Maciek;1000
+MopsMarek;1000

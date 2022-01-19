@@ -1,14 +1,11 @@
 package com.pjeskiem_i_mieczem;
-import com.pjeskiem_i_mieczem.Config;
-import com.pjeskiem_i_mieczem.ImageButton;
-import com.pjeskiem_i_mieczem.Player;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -20,20 +17,16 @@ public class LeaderboardGui extends VBox {
         int buttonWidth = (int) (Config.windowWidth*0.3);
         int buttonHeight = (int)(Config.windowHeight*0.1);
 
-
 //      Setup gui elemets
         Text titleText = new Text("Ranking");
         titleText.setFont(Font.font("Z003",50));
-
         HBox table = this.uploadTable();
-
         ImageButton menuButton = new ImageButton("Wróć do menu", buttonWidth, buttonHeight, "buttons/button_0.png");
 
 //      Setup events
         menuButton.setOnAction((event)->{
             app.goToTheStart();
         });
-
         VBox container = new VBox(titleText, table, menuButton);
         container.setSpacing(10);
         container.setAlignment(Pos.CENTER);
@@ -83,8 +76,6 @@ public class LeaderboardGui extends VBox {
             save.close();
         } catch (IOException e) {
         e.printStackTrace();
+        }
     }
-    }
-
-
 }
