@@ -1,4 +1,5 @@
 package com.pjeskiem_i_mieczem;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -41,15 +42,18 @@ public class CityViewGui extends VBox {
         if(Application.player != null){
             gold = new Text("Twój stan konta to: "+Application.player.getGold()+" $$");
             gold.setFont(Font.font("Z003",20));
-            grid.add(gold, 15, 10, 1, 1);
+//            grid.add(gold, 15, 10, 1, 1);
             healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.hp.getValue(),
                     (float) Application.player.currentHp.getValue());
-            grid.add(healthBar, 15, 10, 1, 1);
-            expBar = new StatBar("#f7573e", true, (int)(Config.windowWidth*0.18),
+//            grid.add(healthBar, 15, 10, 1, 1);
+            expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.expModifier.getValue()*100,
-                    (float) Application.player.exp.getValue());
-            grid.add(expBar, 15, 9, 1, 1);
+                    (float) Application.player.exp.getValue(), "#f0e6b1");
+            VBox statsContainer = new VBox(gold,healthBar, expBar);
+            statsContainer.setSpacing(10);
+            statsContainer.setAlignment(Pos.CENTER);
+            grid.add(statsContainer, 15, 9, 1, 1);
         }
 
 //      Setup buttons and their sizes

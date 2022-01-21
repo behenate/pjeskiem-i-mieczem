@@ -15,20 +15,25 @@ public class StatBar extends HBox {
     double maxValue;
     private final Label textLabel = new Label();
     private final boolean showText;
-//    Bar without text
+//    Bar without background
+    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue){
+        this(colour, showText,width, height,maxValue, currentValue,"FFFFFF00");
+
+    }
 
 //    Bar with progress text
-    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue){
+    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue, String backgroundColour){
         this.width = width;
         this.showText = showText;
         bar.setMinHeight(height);
         bar.setMaxHeight(height);
-        bar.setStyle("-fx-background-color:" + colour);
+        bar.setStyle("-fx-background-color:" + colour );
         textLabel.setAlignment(Pos.CENTER);
         bar.getChildren().addAll(textLabel);
 
         this.maxValue=maxValue;
         updateBar(currentValue);
+        this.setStyle("-fx-background-color: " + backgroundColour);
         this.setMinWidth(width);
         this.getChildren().add(bar);
     }

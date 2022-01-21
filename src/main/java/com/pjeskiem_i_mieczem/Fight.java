@@ -21,7 +21,9 @@ public class Fight implements Runnable{
     @Override
     public void run() {
         Player[] players = {p1,p2};
-        int current_player_idx = 0;
+        int current_player_idx = (int) Math.round(Math.random());
+        System.out.println(current_player_idx);
+
         while(true){
             try {
                 Player current_player = players[current_player_idx];
