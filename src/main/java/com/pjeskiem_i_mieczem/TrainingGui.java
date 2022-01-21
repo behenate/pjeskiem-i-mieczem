@@ -12,13 +12,9 @@ import javafx.scene.text.Text;
 public class TrainingGui extends VBox {
     private final int plusButtonWidth = (int)(Config.windowWidth*0.024);
     private final int plusButtonHeight = (int)(Config.windowHeight*0.04);
-    private int availablePoints;
-    private final ImageButton cityButton;
-    private boolean flag = false;
-    private Label availablePointsLabel;
+    private final Label availablePointsLabel;
 
-    public TrainingGui(int pointsValue, Application app){
-        this.availablePoints = pointsValue;
+    public TrainingGui(Application app){
 //      Setup sizes
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
@@ -34,8 +30,8 @@ public class TrainingGui extends VBox {
 
         int cityButtonWidth = (int) (Config.windowWidth * 0.2);
         int cityButtonHeight = (int) (Config.windowWidth * 0.05);
-        cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png" );
-        availablePointsLabel = new Label("Masz do wykorzystania: "+this.availablePoints+" punktów");
+        ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png");
+        availablePointsLabel = new Label("Masz do wykorzystania: "+Application.player.skillPoints+" punktów");
         availablePointsLabel.setFont(Font.font("Z003",25));
 
         VBox allStats = allStatsBox();
@@ -43,10 +39,9 @@ public class TrainingGui extends VBox {
 //      Create a container and add everything
         VBox container = new VBox(20);
         container.setAlignment(Pos.CENTER);
-        container.getChildren().addAll(titleText, playerImageView, availablePointsLabel, allStats);
+        container.getChildren().addAll(titleText, playerImageView, availablePointsLabel, allStats, cityButton);
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(container);
-
 
 //      Setup action of going to the city (without changing window)
         cityButton.setOnAction((event)->{
@@ -67,15 +62,11 @@ public class TrainingGui extends VBox {
 //      Setup button and its action
         ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png" );
         improveButton.setOnAction((event)->{
-            if(this.availablePoints > 0) {
-                stat.setValue(stat.getValue()+1);
-                valueLabel.setText((int)stat.getValue() + "");
-                this.availablePoints--;
-                this.availablePointsLabel.setText("Masz do wykorzystania: " + this.availablePoints + " punktów");
-                if(this.availablePoints == 0 && !this.flag){
-                    this.flag = true;
-                    this.getChildren().add(cityButton);
-                }
+            if(Application.player.skillPoints > 0) {
+                stat.setValue(stat.getValue() + 1);
+                valueLabel.setText((int) stat.getValue() + "");
+                Application.player.skillPoints--;
+                this.availablePointsLabel.setText("Masz do wykorzystania: " + Application.player.skillPoints + " punktów");
             }
         });
 //      Add everything to a container
@@ -86,14 +77,13 @@ public class TrainingGui extends VBox {
 
     private VBox allStatsBox(){
         VBox box = new VBox(15);
-        HBox statHp = singleStatsBox(Application.player.hp);
         HBox statStrength = singleStatsBox(Application.player.strength);
         HBox statIntelligence = singleStatsBox(Application.player.intelligence);
         HBox statDexterity = singleStatsBox(Application.player.dexterity);
         HBox statEndurance = singleStatsBox(Application.player.endurance);
         HBox statLuck = singleStatsBox(Application.player.luck);
 
-        box.getChildren().addAll(statHp, statStrength, statIntelligence,
+        box.getChildren().addAll(statStrength, statIntelligence,
                 statDexterity, statEndurance, statLuck);
         return box;
     }
