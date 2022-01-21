@@ -8,13 +8,14 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     Stage stage;
     public static Player player;
+    LeaderboardGui leaderboardGui = new LeaderboardGui(this);
+
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
 
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
         CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
-//        LeaderboardGui leaderboardGui = new LeaderboardGui(this);
 //        TrainingGui trainingGui = new TrainingGui(4, this);
 //        FailureGui failureGui = new FailureGui(leaderboardGui, this);
 //        VictoryGui victoryGui = new VictoryGui(this);
@@ -46,7 +47,7 @@ public class Application extends javafx.application.Application {
         Player warriorPreset = new Warrior();
         warriorPreset.setName("Złoty");
         FightGui fightGui = new FightGui(player, warriorPreset);
-        Fight fight = new Fight(fightGui, hunterPreset, warriorPreset);
+        Fight fight = new Fight(this, fightGui, player, warriorPreset);
         Thread fightThread = new Thread(fight);
         fightThread.start();
         Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
@@ -74,6 +75,18 @@ public class Application extends javafx.application.Application {
     public void goToCreateCharacterGui(){
         CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
         Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToFailureGui(){
+        FailureGui failureGui = new FailureGui(leaderboardGui, this);
+        Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
+    public void goToVictoryGui(){
+        VictoryGui victoryGui = new VictoryGui(this);
+        Scene scene = new Scene(victoryGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }
 

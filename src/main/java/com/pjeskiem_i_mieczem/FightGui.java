@@ -11,8 +11,8 @@ import javafx.scene.text.Text;
 
 public class FightGui extends VBox {
     private HBox cardsContainer = new HBox();
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
     public FightGui(Player characterUno, Player characterDos){
         this.player1 = characterUno;
         this.player2 = characterDos;
