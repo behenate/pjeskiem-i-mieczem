@@ -12,8 +12,7 @@ import javafx.scene.text.Text;
 public class TrainingGui extends VBox {
     private final int plusButtonWidth = (int)(Config.windowWidth*0.024);
     private final int plusButtonHeight = (int)(Config.windowHeight*0.04);
-    private final ImageButton cityButton;
-    private Label availablePointsLabel;
+    private final Label availablePointsLabel;
 
     public TrainingGui(Application app){
 //      Setup sizes
@@ -31,7 +30,7 @@ public class TrainingGui extends VBox {
 
         int cityButtonWidth = (int) (Config.windowWidth * 0.2);
         int cityButtonHeight = (int) (Config.windowWidth * 0.05);
-        cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png" );
+        ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png");
         availablePointsLabel = new Label("Masz do wykorzystania: "+Application.player.skillPoints+" punktów");
         availablePointsLabel.setFont(Font.font("Z003",25));
 

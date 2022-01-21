@@ -39,7 +39,7 @@ public class CreateCharacterGui extends VBox {
 
         Label characterNameLabel = new Label("Wybierz imje pjesa: ");
         TextField characterNameField = new TextField();
-        characterNameField.setText("Domyślny pjeseł");
+        characterNameField.setText("Bernio");
 
         ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/arrow_left.png");
         ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/arrow_right.png");
