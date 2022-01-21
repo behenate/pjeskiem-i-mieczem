@@ -12,6 +12,7 @@ public class Player {
     protected String name;
     protected String className;
     protected Statistic hp;
+    protected Statistic currentHp;
     protected int gold;
     protected Statistic endurance;
     protected Statistic strength;
@@ -39,9 +40,10 @@ public class Player {
         this.level = 1;
         this.exp = new Statistic("Exp", 100);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
-        this.hp = new Statistic("Temp HP", this.endurance.getValue()*1);
+        this.currentHp = new Statistic("Temp HP", this.endurance.getValue()*10);
         setImagePath(imagePath);
     }
+
 //  minimalistic constructor to test sth
     public Player(String name, int gold){
         this.name = name;
@@ -64,7 +66,7 @@ public class Player {
 
     public Node getStatsView(){
         return new VBox(
-                hp.getLabel(),
+                currentHp.getLabel(),
                 strength.getLabel(),
                 intelligence.getLabel(),
                 dexterity.getLabel(),
@@ -75,7 +77,7 @@ public class Player {
     public VBox getPlayerCard(int width){
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) hp.getValue(), 5);
+        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), hp.getValue(), currentHp.getValue());
         Node statCard = getStatsView();
         imageView.setFitWidth(width*0.7);
         imageView.setFitHeight(width*0.7);
@@ -86,5 +88,11 @@ public class Player {
 
     public int getGold(){
         return this.gold;
+    }
+    public void takeDamage(Player other){
+        this.currentHp.setValue(this.currentHp.getValue()-1);
+    }
+    public int getDamage(){
+        return 1;
     }
 }

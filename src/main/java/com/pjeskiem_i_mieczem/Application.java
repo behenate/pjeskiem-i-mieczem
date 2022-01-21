@@ -39,12 +39,16 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+
     public void goToTheArena(){
         Player hunterPreset = new Player("Łowca", 2, 2, 2, 100, 2, "dino.jpg");
         hunterPreset.setName("Dino");
         Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "zloty.jpg");
         warriorPreset.setName("Złoty");
         FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
+        Fight fight = new Fight(fightGui, hunterPreset, warriorPreset);
+        Thread fightThread = new Thread(fight);
+        fightThread.start();
         Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }
@@ -66,6 +70,13 @@ public class Application extends javafx.application.Application {
         Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }
+
+    public void goToCreateCharacterGui(){
+        CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
+        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        this.stage.setScene(scene);
+    }
+
 
 
 }

@@ -5,4 +5,10 @@ public class Mage extends Player{
         super("Mag",6,1,1,8,6,"mage.png");
         this.hp = new Statistic("Hp", this.endurance.getValue()*5);
     }
+
+    @Override
+    public int getDamage() {
+        return 20*intelligence.getValue() + luck.getValue();
+    }
+
 }
