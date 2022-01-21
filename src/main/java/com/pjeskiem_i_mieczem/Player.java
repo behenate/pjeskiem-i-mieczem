@@ -77,9 +77,21 @@ public class Player {
     public int getGold(){
         return this.gold;
     }
+
+    public void addGold(double value){this.gold += value;}
+
     public void takeDamage(Player other){
         this.currentHp.setValue(this.currentHp.getValue()-1);
     }
+
+    public void checkLevelUp() {
+        if (this.exp.getValue() >= this.expModifier.getValue() * 100) {
+            this.level += 1;
+            this.skillPoints += 4;
+            this.expModifier.setValue(this.expModifier.getValue()+0.1);
+        }
+    }
+
     public double getDamage(){
         return 1;
     }

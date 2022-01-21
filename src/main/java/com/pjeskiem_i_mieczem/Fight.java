@@ -8,19 +8,18 @@ import java.net.URISyntaxException;
 
 public class Fight implements Runnable{
     private FightGui gui;
-    private Player p1;
+
     private Player p2;
     private Application app;
-    public Fight(Application app, FightGui gui, Player p1, Player p2){
+    public Fight(Application app, FightGui gui, Player p2){
         this.gui = gui;
-        this.p1 = p1;
         this.p2 = p2;
         this.app = app;
     }
 
     @Override
     public void run() {
-        Player[] players = {p1,p2};
+        Player[] players = {Application.player,p2};
         int current_player_idx = 0;
         while(true){
             try {
@@ -39,6 +38,10 @@ public class Fight implements Runnable{
                         Platform.runLater(() -> app.goToFailureGui());
                     }
                     else {
+                        double wonExp = p2.exp.getValue() * (Math.random() * 9.9 + 0.1 / (double) 100);
+                        Application.player.exp.setValue(Application.player.exp.getValue()+wonExp);
+                        Application.player.checkLevelUp();
+                        Application.player.addGold(p2.gold * (Math.random() * 24 + 1) / (double) 100);
                         Platform.runLater(() -> app.goToVictoryGui());
                     }
                     break;
