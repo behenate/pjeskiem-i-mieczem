@@ -62,7 +62,11 @@ public class CreateCharacterGui extends VBox {
             current_class = (current_class + 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
+//      creating a new player
         continueButton.setOnAction((event)->{
+            Player newPlayer = classPresets[Math.abs(current_class)];
+            newPlayer.setName(characterNameField.getText());
+            Application.player = newPlayer;
             app.goToTheCity();
         });
 
@@ -74,7 +78,7 @@ public class CreateCharacterGui extends VBox {
         statsBox.getChildren().addAll(buttonsAndClassnameContainer);
         VBox container = new VBox(titleText, characterNameLabel, characterNameField, buttonsAndClassnameContainer, classImageView,statsBox, continueButton);
 
-        //      Setup alignments
+//      Setup alignments
         container.setAlignment(Pos.CENTER);
         statsBox.setAlignment(Pos.CENTER);
         statsBox.setMaxWidth(prefWidth);

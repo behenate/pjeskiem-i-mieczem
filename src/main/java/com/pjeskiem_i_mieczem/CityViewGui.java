@@ -7,12 +7,10 @@ import javafx.scene.text.Text;
 
 public class CityViewGui extends VBox {
     GridPane grid = new GridPane();
-    Player player;
     Application app;
 
-    public CityViewGui(Player player, Application app){
+    public CityViewGui(Application app){
         this.app = app;
-        this.player = player;
         makeGrid();
         this.getChildren().addAll(grid);
         this.setBack();
@@ -36,8 +34,8 @@ public class CityViewGui extends VBox {
 //      Setup gui elements
         Text titleText = new Text("Witaj w pjeskowie!");
         titleText.setFont(Font.font("Z003",50));
-        if(player != null){
-            Text gold = new Text("Twój stan konta to: "+player.getGold()+" $$");
+        if(Application.player != null){
+            Text gold = new Text("Twój stan konta to: "+Application.player.getGold()+" $$");
             gold.setFont(Font.font("Z003",20));
             grid.add(gold, 15, 10, 1, 1);
         }
@@ -81,9 +79,10 @@ public class CityViewGui extends VBox {
         grid.add(chillButton, 5, 6, 1, 1);
     }
 
+//  musimy zdecydować ile dodaje hp a ile złota bierze
     private void chillOut(){
-        this.player.gold -= 10;
-        this.player.hp.setValue(this.player.hp.getValue()+5);
+        Application.player.gold -= 10;
+        Application.player.hp.setValue(Application.player.hp.getValue()+5);
     }
 
     private void setBack(){

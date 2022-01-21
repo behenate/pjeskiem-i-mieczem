@@ -67,11 +67,11 @@ public class LeaderboardGui extends VBox {
     }
 
 
-    public void saveToLeaderboard(Player player) {
+    public void saveToLeaderboard() {
         try{
             FileWriter file = new FileWriter("src/main/resources/leaderboard/scoreData.txt", true);
             BufferedWriter save = new BufferedWriter(file);
-            save.write(player.name+";"+player.gold);
+            save.write(Application.player.name+";"+Application.player.gold);
             save.newLine();
             save.close();
         } catch (IOException e) {

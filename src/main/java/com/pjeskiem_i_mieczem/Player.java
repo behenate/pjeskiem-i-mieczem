@@ -18,9 +18,13 @@ public class Player {
     protected Statistic dexterity;
     protected Statistic intelligence;
     protected Statistic luck;
+    protected Statistic exp;
+    protected Statistic expModifier;
+    protected int level;
     protected String imagePath;
     protected Image image;
     protected ImageView imageView;
+
     public Player(String className, Integer endurance, Integer strength, Integer dexterity,
                   Integer intelligence, Integer luck, String imagePath){
         this.className = className;
@@ -29,8 +33,11 @@ public class Player {
         this.dexterity = new Statistic("Zręczność", dexterity);
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
+        this.expModifier = new Statistic("ExpModifier", 1.3);
         this.imagePath = imagePath;
         this.gold = 500;
+        this.level = 1;
+        this.exp = new Statistic("Exp", 100);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
         this.hp = new Statistic("Temp HP", this.endurance.getValue()*1);
         setImagePath(imagePath);
@@ -54,6 +61,7 @@ public class Player {
     public void setName(String name){
         this.name = name;
     }
+
     public Node getStatsView(){
         return new VBox(
                 hp.getLabel(),
@@ -67,7 +75,7 @@ public class Player {
     public VBox getPlayerCard(int width){
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), hp.getValue(), 5);
+        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) hp.getValue(), 5);
         Node statCard = getStatsView();
         imageView.setFitWidth(width*0.7);
         imageView.setFitHeight(width*0.7);
