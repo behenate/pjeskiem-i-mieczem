@@ -77,7 +77,7 @@ public class Player {
     public VBox getPlayerCard(int width){
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), hp.getValue(), currentHp.getValue());
+        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) hp.getValue(), (float) currentHp.getValue());
         Node statCard = getStatsView();
         imageView.setFitWidth(width*0.7);
         imageView.setFitHeight(width*0.7);

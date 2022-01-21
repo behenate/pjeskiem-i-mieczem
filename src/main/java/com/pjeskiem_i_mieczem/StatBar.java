@@ -11,10 +11,10 @@ import javafx.scene.layout.StackPane;
 // Class showing how much of some thing is left
 public class StatBar extends HBox {
     StackPane bar = new StackPane();
-    private int width;
+    private final int width;
     float maxValue;
-    private Label textLabel = new Label();
-    private boolean showText;
+    private final Label textLabel = new Label();
+    private final boolean showText;
 //    Bar without text
 
 //    Bar with progress text
@@ -22,6 +22,7 @@ public class StatBar extends HBox {
         this.width = width;
         this.showText = showText;
         bar.setMinHeight(height);
+        bar.setMaxHeight(height);
         bar.setStyle("-fx-background-color:" + colour);
         textLabel.setAlignment(Pos.CENTER);
         bar.getChildren().addAll(textLabel);

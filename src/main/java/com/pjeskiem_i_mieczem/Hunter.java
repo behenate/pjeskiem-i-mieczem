@@ -8,6 +8,6 @@ public class Hunter extends Player{
     }
 
     public int getDamage(){
-        return dexterity.getValue() * 12 + luck.getValue();
+        return (int)( dexterity.getValue() * 12 + luck.getValue());
     }
 }

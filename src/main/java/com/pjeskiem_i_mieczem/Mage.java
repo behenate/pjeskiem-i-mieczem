@@ -8,7 +8,7 @@ public class Mage extends Player{
 
     @Override
     public int getDamage() {
-        return 20*intelligence.getValue() + luck.getValue();
+        return (int)(20*intelligence.getValue() + luck.getValue());
     }
 
 }

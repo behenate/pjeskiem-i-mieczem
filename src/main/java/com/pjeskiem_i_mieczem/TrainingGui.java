@@ -86,14 +86,13 @@ public class TrainingGui extends VBox {
 
     private VBox allStatsBox(){
         VBox box = new VBox(15);
-        HBox statHp = singleStatsBox(Application.player.hp);
         HBox statStrength = singleStatsBox(Application.player.strength);
         HBox statIntelligence = singleStatsBox(Application.player.intelligence);
         HBox statDexterity = singleStatsBox(Application.player.dexterity);
         HBox statEndurance = singleStatsBox(Application.player.endurance);
         HBox statLuck = singleStatsBox(Application.player.luck);
 
-        box.getChildren().addAll(statHp, statStrength, statIntelligence,
+        box.getChildren().addAll(statStrength, statIntelligence,
                 statDexterity, statEndurance, statLuck);
         return box;
     }
