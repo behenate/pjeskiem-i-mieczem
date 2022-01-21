@@ -10,6 +10,7 @@ public class CityViewGui extends VBox {
     Application app;
     Text gold;
     StatBar healthBar;
+    StatBar expBar;
 
     public CityViewGui(Application app){
         this.app = app;
@@ -45,6 +46,10 @@ public class CityViewGui extends VBox {
                     (int)(Config.windowHeight*0.02), (float) Application.player.hp.getValue(),
                     (float) Application.player.currentHp.getValue());
             grid.add(healthBar, 15, 10, 1, 1);
+            expBar = new StatBar("#f7573e", true, (int)(Config.windowWidth*0.18),
+                    (int)(Config.windowHeight*0.02), (float) Application.player.expModifier.getValue()*100,
+                    (float) Application.player.exp.getValue());
+            grid.add(expBar, 15, 9, 1, 1);
         }
 
 //      Setup buttons and their sizes

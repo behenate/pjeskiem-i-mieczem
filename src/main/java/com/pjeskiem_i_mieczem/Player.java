@@ -35,7 +35,7 @@ public class Player {
         this.dexterity = new Statistic("Zręczność", dexterity);
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
-        this.expModifier = new Statistic("ExpModifier", 1.3);
+        this.expModifier = new Statistic("ExpModifier", 1.2);
         this.imagePath = imagePath;
         this.gold = 500;
         this.level = 1;
