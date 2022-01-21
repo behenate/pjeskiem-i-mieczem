@@ -18,7 +18,7 @@ public class StatBar extends HBox {
 //    Bar without text
 
 //    Bar with progress text
-    public StatBar(String colour, Boolean showText, int width, int height, float maxValue, float currentValue){
+    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue){
         this.width = width;
         this.showText = showText;
         bar.setMinHeight(height);
@@ -32,7 +32,7 @@ public class StatBar extends HBox {
         this.setMinWidth(width);
         this.getChildren().add(bar);
     }
-    public void updateBar(float currentValue){
+    public void updateBar(double currentValue){
         bar.setPrefWidth(Math.min(1, currentValue/maxValue)*width);
         if (showText)
             textLabel.setText(Math.round(currentValue) + "/"+ Math.round(maxValue));

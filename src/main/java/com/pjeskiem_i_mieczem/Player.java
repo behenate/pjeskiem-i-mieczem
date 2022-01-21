@@ -39,8 +39,6 @@ public class Player {
         this.gold = 500;
         this.level = 1;
         this.exp = new Statistic("Exp", 100);
-        this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
-        this.currentHp = new Statistic("Temp HP", this.endurance.getValue()*10);
         setImagePath(imagePath);
     }
 
@@ -92,7 +90,7 @@ public class Player {
     public void takeDamage(Player other){
         this.currentHp.setValue(this.currentHp.getValue()-1);
     }
-    public int getDamage(){
+    public double getDamage(){
         return 1;
     }
 }

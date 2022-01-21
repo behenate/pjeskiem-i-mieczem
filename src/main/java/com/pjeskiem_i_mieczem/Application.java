@@ -41,11 +41,11 @@ public class Application extends javafx.application.Application {
 
 
     public void goToTheArena(){
-        Player hunterPreset = new Player("Łowca", 2, 2, 2, 100, 2, "dino.jpg");
+        Player hunterPreset = new Hunter();
         hunterPreset.setName("Dino");
-        Player warriorPreset = new Player("Wojownik", 2, 2, 2, 2, 2, "zloty.jpg");
+        Player warriorPreset = new Warrior();
         warriorPreset.setName("Złoty");
-        FightGui fightGui = new FightGui(hunterPreset, warriorPreset);
+        FightGui fightGui = new FightGui(player, warriorPreset);
         Fight fight = new Fight(fightGui, hunterPreset, warriorPreset);
         Thread fightThread = new Thread(fight);
         fightThread.start();
