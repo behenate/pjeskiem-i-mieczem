@@ -17,6 +17,7 @@ public class Warrior extends Player{
         float warrior_reduction = (other instanceof Warrior) ? strength.getValue() :0;
         float hunter_reduction = (other instanceof Hunter) ? dexterity.getValue() :0;
         float shield_protection = strength.getValue();
-
+        int dmg = (int)(other.getDamage() * (1-mage_reduction-warrior_reduction-hunter_reduction-shield_protection));
+        currentHp.setValue(currentHp.getValue() - dmg);
     }
 }
