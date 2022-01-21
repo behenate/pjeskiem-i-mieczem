@@ -7,21 +7,25 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
     Stage stage;
+    public static Player player;
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
 
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
         CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
-        LeaderboardGui leaderboardGui = new LeaderboardGui(this);
-        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4, this);
-        FailureGui failureGui = new FailureGui(new Player("Adam", 1000), leaderboardGui, this);
-        VictoryGui victoryGui = new VictoryGui(new Player("Adam", 1000), this);
+//        LeaderboardGui leaderboardGui = new LeaderboardGui(this);
+//        TrainingGui trainingGui = new TrainingGui(4, this);
+//        FailureGui failureGui = new FailureGui(leaderboardGui, this);
+//        VictoryGui victoryGui = new VictoryGui(this);
 
-//        Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
-        goToTheArena();
+        Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
+//        Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
+//        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
+        //Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
+//        Scene scene = new Scene(victoryGui);
         this.stage.setTitle("Pjeskiem I Mieczem");
-//        this.stage.setScene(scene);
+        this.stage.setScene(scene);
         this.stage.show();
     }
 
@@ -29,9 +33,8 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
-
     public void goToTheCity(){
-        CityViewGui cityViewGui = new CityViewGui(new Player("Adam", 100), this);
+        CityViewGui cityViewGui = new CityViewGui(this);
         Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }
@@ -57,7 +60,7 @@ public class Application extends javafx.application.Application {
     }
 
     public void goToTheTraining(){
-        TrainingGui trainingGui = new TrainingGui(new Player("Goodboi", 100), 4, this);
+        TrainingGui trainingGui = new TrainingGui(4, this);
         Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }

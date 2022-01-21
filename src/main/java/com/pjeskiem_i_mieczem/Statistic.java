@@ -8,22 +8,25 @@ import javafx.scene.text.Font;
 
 public class Statistic{
     private String name;
-    private int value;
-    public Statistic(String name, int value){
+    private double value;
+    public Statistic(String name, double value){
         this.name = name;
         this.value = value;
     }
-    public int getValue(){
+    public double getValue(){
         return value;
     }
+
     public String getName(){return name;}
-    public void setValue(int value){
+
+    public void setValue(double value){
         this.value = value;
     }
+
     public HBox getLabel(){
         Label nameLabel = new Label(this.name+":");
         nameLabel.setPrefWidth(Config.windowWidth*0.15);
-        Label valueLabel = new Label(""+this.value);
+        Label valueLabel = new Label(""+ (int) this.value);
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
         return new HBox(nameLabel, valueLabel);

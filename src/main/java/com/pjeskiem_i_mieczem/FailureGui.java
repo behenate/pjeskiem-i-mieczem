@@ -10,7 +10,7 @@ import javafx.scene.text.FontWeight;
 public class FailureGui extends VBox {
     private final LeaderboardGui leaderboardGui;
 
-    public FailureGui(Player player, LeaderboardGui leaderboard, Application app){
+    public FailureGui(LeaderboardGui leaderboard, Application app){
 //      Setup size
         this.leaderboardGui = leaderboard;
         this.setPrefWidth(Config.windowWidth);
@@ -20,7 +20,7 @@ public class FailureGui extends VBox {
 
 //      Setup labels
         Label titleText = new Label("Przegraaaaaałeś");
-        Label scoreLabel = new Label("Twój wynik to: "+player.getGold());
+        Label scoreLabel = new Label("Twój wynik to: "+Application.player.getGold());
         titleText.setFont(Font.font("Z003", FontWeight.BOLD, 50));
         scoreLabel.setFont(Font.font("Z003", FontWeight.BOLD, 25));
         titleText.setTextFill(Color.WHITESMOKE);
@@ -30,7 +30,7 @@ public class FailureGui extends VBox {
         //jakiś błąd z zapisem do rankingu (!!!)
         ImageButton saveButton = new ImageButton("Zapisz wynik", buttonWidth, buttonHeight, "buttons/button_1.png");
         saveButton.setOnAction((event)->{
-            leaderboardGui.saveToLeaderboard(player);
+            leaderboardGui.saveToLeaderboard();
         });
         ImageButton menuButton = new ImageButton("Zacznij od nowa", buttonWidth, buttonHeight, "buttons/button_1.png");
         menuButton.setOnAction((event)->{

@@ -19,6 +19,9 @@ public class Player {
     protected Statistic dexterity;
     protected Statistic intelligence;
     protected Statistic luck;
+    protected Statistic exp;
+    protected Statistic expModifier;
+    protected int level;
     protected String imagePath;
     protected Image image;
     protected ImageView imageView;
@@ -31,8 +34,11 @@ public class Player {
         this.dexterity = new Statistic("Zręczność", dexterity);
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
+        this.expModifier = new Statistic("ExpModifier", 1.3);
         this.imagePath = imagePath;
         this.gold = 500;
+        this.level = 1;
+        this.exp = new Statistic("Exp", 100);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10 );
         this.currentHp = new Statistic("Temp HP", this.endurance.getValue()*10);
         setImagePath(imagePath);
@@ -57,6 +63,7 @@ public class Player {
     public void setName(String name){
         this.name = name;
     }
+
     public Node getStatsView(){
         return new VBox(
                 currentHp.getLabel(),

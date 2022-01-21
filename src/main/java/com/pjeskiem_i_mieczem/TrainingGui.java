@@ -7,20 +7,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class TrainingGui extends VBox {
-    private final Player player;
     private final int plusButtonWidth = (int)(Config.windowWidth*0.024);
     private final int plusButtonHeight = (int)(Config.windowHeight*0.04);
     private int availablePoints;
-    private String[] stats = new String[6];
     private final ImageButton cityButton;
     private boolean flag = false;
     private Label availablePointsLabel;
 
-    public TrainingGui(Player player, int pointsValue, Application app){
-        this.player = player;
+    public TrainingGui(int pointsValue, Application app){
         this.availablePoints = pointsValue;
 //      Setup sizes
         this.setPrefWidth(Config.windowWidth);
@@ -28,10 +25,10 @@ public class TrainingGui extends VBox {
         int imageSize = (int)(Config.windowHeight*0.3);
 
 //      Setup gui elements
-        Text titleText = new Text("Ulepsz swoją postać "+player.name);
+        Text titleText = new Text("Ulepsz swoją postać " + Application.player.name);
         titleText.setFont(Font.font("Z003",30));
 
-        ImageView playerImageView = player.imageView;
+        ImageView playerImageView = Application.player.imageView;
         playerImageView.setFitWidth(imageSize);
         playerImageView.setFitHeight(imageSize);
 
@@ -51,24 +48,17 @@ public class TrainingGui extends VBox {
         this.getChildren().addAll(container);
 
 
-
 //      Setup action of going to the city (without changing window)
         cityButton.setOnAction((event)->{
-            if(stats[0] != null) player.hp.setValue(Integer.parseInt(stats[0]));
-            if(stats[1] != null) player.strength.setValue(Integer.parseInt(stats[1]));
-            if(stats[2] != null) player.intelligence.setValue(Integer.parseInt(stats[2]));
-            if(stats[3] != null) player.dexterity.setValue(Integer.parseInt(stats[3]));
-            if(stats[4] != null) player.endurance.setValue(Integer.parseInt(stats[4]));
-            if(stats[5] != null) player.luck.setValue(Integer.parseInt(stats[5]));
             app.goToTheCity();
         });
     }
 
-    private HBox singleStatsBox(Statistic stat, int index){
+    private HBox singleStatsBox(Statistic stat){
         HBox box = new HBox(10);
 //      Setup labels
         Label nameLabel = new Label(stat.getName());
-        Label valueLabel = new Label(stat.getValue()+"");
+        Label valueLabel = new Label((int)stat.getValue()+"");
         nameLabel.setMinWidth(150);
         valueLabel.setMinWidth(40);
         nameLabel.setFont(Font.font(16));
@@ -76,12 +66,10 @@ public class TrainingGui extends VBox {
 
 //      Setup button and its action
         ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png" );
-        AtomicInteger newValue = new AtomicInteger(stat.getValue());
         improveButton.setOnAction((event)->{
             if(this.availablePoints > 0) {
-                newValue.addAndGet(1);
-                valueLabel.setText(newValue + "");
-                stats[index] = valueLabel.getText();
+                stat.setValue(stat.getValue()+1);
+                valueLabel.setText((int)stat.getValue() + "");
                 this.availablePoints--;
                 this.availablePointsLabel.setText("Masz do wykorzystania: " + this.availablePoints + " punktów");
                 if(this.availablePoints == 0 && !this.flag){
@@ -98,12 +86,12 @@ public class TrainingGui extends VBox {
 
     private VBox allStatsBox(){
         VBox box = new VBox(15);
-        HBox statHp = singleStatsBox(player.hp, 0);
-        HBox statStrength = singleStatsBox(player.strength, 1);
-        HBox statIntelligence = singleStatsBox(player.intelligence, 2);
-        HBox statDexterity = singleStatsBox(player.dexterity, 3);
-        HBox statEndurance = singleStatsBox(player.endurance, 4);
-        HBox statLuck = singleStatsBox(player.luck, 5);
+        HBox statHp = singleStatsBox(Application.player.hp);
+        HBox statStrength = singleStatsBox(Application.player.strength);
+        HBox statIntelligence = singleStatsBox(Application.player.intelligence);
+        HBox statDexterity = singleStatsBox(Application.player.dexterity);
+        HBox statEndurance = singleStatsBox(Application.player.endurance);
+        HBox statLuck = singleStatsBox(Application.player.luck);
 
         box.getChildren().addAll(statHp, statStrength, statIntelligence,
                 statDexterity, statEndurance, statLuck);

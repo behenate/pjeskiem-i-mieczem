@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class VictoryGui extends VBox{
-    public VictoryGui(Player player, Application main){
+    public VictoryGui(Application main){
 //      Setup size
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowHeight);
@@ -18,7 +18,7 @@ public class VictoryGui extends VBox{
 
 //      Setup labels
         Label titleText = new Label("Brawo! \n Wygrałeeś!");
-        Label scoreLabel = new Label("Twój aktualny stan konta to: "+player.getGold());
+        Label scoreLabel = new Label("Twój aktualny stan konta to: "+Application.player.getGold());
         // Tu ma byc exp wg moich planów
         //Label expLabel = new Label("Masz: "+player.getGold());
         titleText.setFont(Font.font("Z003", FontWeight.BOLD, 45));
