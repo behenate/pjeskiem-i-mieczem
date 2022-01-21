@@ -46,8 +46,8 @@ public class Application extends javafx.application.Application {
         hunterPreset.setName("Dino");
         Player warriorPreset = new Warrior();
         warriorPreset.setName("Złoty");
-        FightGui fightGui = new FightGui(player, warriorPreset);
-        Fight fight = new Fight(this, fightGui, player, warriorPreset);
+        FightGui fightGui = new FightGui(warriorPreset);
+        Fight fight = new Fight(this, fightGui,warriorPreset);
         Thread fightThread = new Thread(fight);
         fightThread.start();
         Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);
