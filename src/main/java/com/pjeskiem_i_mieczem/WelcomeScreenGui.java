@@ -30,7 +30,7 @@ public class WelcomeScreenGui extends HBox {
 
 //        Setup events
         startButton.setOnAction((event)->{
-            app.goToTheCity();
+            app.goToCreateCharacterGui();
         });
         leaderboardButton.setOnAction((event)->{
             app.goToTheLeaderboard();

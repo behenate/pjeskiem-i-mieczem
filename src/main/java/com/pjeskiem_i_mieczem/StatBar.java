@@ -28,6 +28,7 @@ public class StatBar extends HBox {
 
         this.maxValue=maxValue;
         updateBar(currentValue);
+        this.setMinWidth(width);
         this.getChildren().add(bar);
     }
     public void updateBar(float currentValue){
