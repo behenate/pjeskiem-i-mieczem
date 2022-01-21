@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 public class StatBar extends HBox {
     StackPane bar = new StackPane();
     private final int width;
-    float maxValue;
+    double maxValue;
     private final Label textLabel = new Label();
     private final boolean showText;
 //    Bar without text

@@ -9,6 +9,7 @@ public class CityViewGui extends VBox {
     GridPane grid = new GridPane();
     Application app;
     Text gold;
+    StatBar healthBar;
 
     public CityViewGui(Application app){
         this.app = app;
@@ -40,7 +41,7 @@ public class CityViewGui extends VBox {
             gold = new Text("Twój stan konta to: "+Application.player.getGold()+" $$");
             gold.setFont(Font.font("Z003",20));
             grid.add(gold, 15, 10, 1, 1);
-            StatBar healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
+            healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.hp.getValue(),
                     (float) Application.player.currentHp.getValue());
             grid.add(healthBar, 15, 10, 1, 1);
@@ -67,6 +68,7 @@ public class CityViewGui extends VBox {
         chillButton.setOnAction((event)->{
             this.chillOut();
             this.gold.setText("Twój stan konta to: "+Application.player.getGold()+" $$");
+            this.healthBar.updateBar((float) Application.player.currentHp.getValue());
         });
         trainingButton.setOnAction((event)->{
             app.goToTheTraining();
@@ -86,10 +88,12 @@ public class CityViewGui extends VBox {
         grid.add(chillButton, 5, 6, 1, 1);
     }
 
-//  musimy zdecydować ile dodaje hp a ile złota bierze
     private void chillOut(){
-        Application.player.gold -= 10;
-        Application.player.hp.setValue(Application.player.hp.getValue()+10);
+        int boost = 10;
+        if(Application.player.currentHp.getValue() < Application.player.hp.getValue()){
+            Application.player.gold -= 10;
+            Application.player.currentHp.setValue(Application.player.currentHp.getValue()+boost);
+        }
     }
 
     private void setBack(){

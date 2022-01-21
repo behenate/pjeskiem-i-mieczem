@@ -25,6 +25,7 @@ public class Player {
     protected String imagePath;
     protected Image image;
     protected ImageView imageView;
+    protected int skillPoints;
 
     public Player(String className, Integer endurance, Integer strength, Integer dexterity,
                   Integer intelligence, Integer luck, String imagePath){
@@ -39,21 +40,10 @@ public class Player {
         this.gold = 500;
         this.level = 1;
         this.exp = new Statistic("Exp", 100);
+        this.skillPoints = 0;
         setImagePath(imagePath);
     }
 
-//  minimalistic constructor to test sth
-    public Player(String name, int gold){
-        this.name = name;
-        this.gold = gold;
-        this.hp = new Statistic("Hp", 123);
-        this.endurance = new Statistic("Wytrzymałość",10);
-        this.strength = new Statistic("Siła",18);
-        this.dexterity = new Statistic("Zręczność", 22);
-        this.intelligence = new Statistic("Inteligencja", 9);
-        this.luck = new Statistic("Szczęście", 77);
-        setImagePath("zloty.jpg");
-    }
     public void setImagePath(String imagePath){
         this.image = new Image(imagePath);
         this.imageView = new ImageView(this.image);
@@ -64,7 +54,7 @@ public class Player {
 
     public Node getStatsView(){
         return new VBox(
-                currentHp.getLabel(),
+                hp.getLabel(),
                 strength.getLabel(),
                 intelligence.getLabel(),
                 dexterity.getLabel(),

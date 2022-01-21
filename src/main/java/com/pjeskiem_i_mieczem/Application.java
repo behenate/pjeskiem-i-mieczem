@@ -60,7 +60,7 @@ public class Application extends javafx.application.Application {
     }
 
     public void goToTheTraining(){
-        TrainingGui trainingGui = new TrainingGui(4, this);
+        TrainingGui trainingGui = new TrainingGui(this);
         Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
         this.stage.setScene(scene);
     }

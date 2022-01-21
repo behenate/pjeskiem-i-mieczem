@@ -5,6 +5,7 @@ public class Warrior extends Player{
         super("Wojownik",8,6,2,1,3,"wojownik.png");
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
         this.currentHp = new Statistic("Hp", this.endurance.getValue()*10);
+//        this.currentHp = new Statistic("Hp", 30);
     }
 
     @Override
