@@ -10,10 +10,12 @@ public class Fight implements Runnable{
     private FightGui gui;
     private Player p1;
     private Player p2;
-    public Fight(FightGui gui, Player p1, Player p2){
+    private Application app;
+    public Fight(Application app, FightGui gui, Player p1, Player p2){
         this.gui = gui;
         this.p1 = p1;
         this.p2 = p2;
+        this.app = app;
     }
 
     @Override
@@ -26,9 +28,21 @@ public class Fight implements Runnable{
                 Player other_player = players[(current_player_idx+1)%2];
                 Thread.sleep(1000);
                 other_player.takeDamage(current_player);
+                current_player_idx = (current_player_idx + 1)%2;
+                other_player.currentHp.setValue(Math.max(other_player.currentHp.getValue(),0));
                 Platform.runLater(()->{
                     gui.updateFightGui();
                 });
+                if (other_player.currentHp.getValue() == 0){
+                    Thread.sleep(1000);
+                    if (other_player == Application.player){
+                        Platform.runLater(() -> app.goToFailureGui());
+                    }
+                    else {
+                        Platform.runLater(() -> app.goToVictoryGui());
+                    }
+                    break;
+                }
                 System.out.println("Stary niedzwiedz mocno spi");
             } catch (InterruptedException e) {
                 e.printStackTrace();

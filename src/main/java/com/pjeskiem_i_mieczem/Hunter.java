@@ -18,7 +18,7 @@ public class Hunter extends Player{
         double hunter_reduction = (other instanceof Hunter) ? dexterity.getValue() :0;
         double dodge_chance = Math.min(0.5f, dexterity.getValue()/100f);
         int dmg = (int)(other.getDamage() * (100-mage_reduction-warrior_reduction-hunter_reduction)/100);
-        if (Math.random() < dodge_chance){
+        if (Math.random() > dodge_chance){
             currentHp.setValue(currentHp.getValue() - dmg);
         }else {
             System.out.println("Dodge!");
