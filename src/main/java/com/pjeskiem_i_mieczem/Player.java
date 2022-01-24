@@ -8,11 +8,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class Player {
+public abstract class Player {
     protected String name;
     protected String className;
+    protected Statistic maxHp;
     protected Statistic hp;
-    protected Statistic currentHp;
     protected int gold;
     protected Statistic endurance;
     protected Statistic strength;
@@ -54,7 +54,7 @@ public class Player {
 
     public Node getStatsView(){
         return new VBox(
-                hp.getLabel(),
+                maxHp.getLabel(),
                 strength.getLabel(),
                 intelligence.getLabel(),
                 dexterity.getLabel(),
@@ -65,7 +65,7 @@ public class Player {
     public VBox getPlayerCard(int width){
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) hp.getValue(), (float) currentHp.getValue());
+        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) maxHp.getValue(), (float) hp.getValue());
         Node statCard = getStatsView();
         imageView.setFitWidth(width*0.7);
         imageView.setFitHeight(width*0.7);
@@ -81,7 +81,7 @@ public class Player {
     public void addGold(double value){this.gold += value;}
 
     public void takeDamage(Player other){
-        this.currentHp.setValue(this.currentHp.getValue()-1);
+        this.hp.setValue(this.hp.getValue()-1);
     }
 
     public void checkLevelUp() {
@@ -90,6 +90,13 @@ public class Player {
             this.skillPoints += 4;
             this.expModifier.setValue(this.expModifier.getValue()+0.1);
         }
+    }
+    public abstract void recalculateHp();
+    public void recalculateHp(int hpMultiplier){
+        double oldHp = this.maxHp.getValue();
+        double newHp = this.endurance.getValue()*hpMultiplier;
+        this.maxHp.setValue(newHp);
+        this.hp.setValue(this.hp.getValue()+newHp-oldHp);
     }
 
     public double getDamage(){

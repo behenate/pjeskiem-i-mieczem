@@ -3,8 +3,8 @@ package com.pjeskiem_i_mieczem;
 public class Warrior extends Player{
     public Warrior(){
         super("Wojownik",8,6,2,1,3,"wojownik.png");
+        this.maxHp = new Statistic("Hp", this.endurance.getValue()*10);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
-        this.currentHp = new Statistic("Hp", this.endurance.getValue()*10);
 //        this.currentHp = new Statistic("Hp", 30);
     }
 
@@ -20,6 +20,10 @@ public class Warrior extends Player{
         double hunter_reduction = (other instanceof Hunter) ? dexterity.getValue() :0;
         double shield_protection = Math.min(50,strength.getValue());
         int dmg = (int)(other.getDamage() * (100-mage_reduction-warrior_reduction-hunter_reduction-shield_protection)/100);
-        currentHp.setValue(currentHp.getValue() - dmg);
+        hp.setValue(hp.getValue() - dmg);
+    }
+
+    public void recalculateHp() {
+        super.recalculateHp(12);
     }
 }

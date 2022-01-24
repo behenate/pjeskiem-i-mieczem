@@ -1,11 +1,6 @@
 package com.pjeskiem_i_mieczem;
 import javafx.application.Platform;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 public class Fight implements Runnable{
     private FightGui gui;
 
@@ -28,11 +23,11 @@ public class Fight implements Runnable{
                 Thread.sleep(1000);
                 other_player.takeDamage(current_player);
                 current_player_idx = (current_player_idx + 1)%2;
-                other_player.currentHp.setValue(Math.max(other_player.currentHp.getValue(),0));
+                other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
                 Platform.runLater(()->{
                     gui.updateFightGui();
                 });
-                if (other_player.currentHp.getValue() == 0){
+                if (other_player.hp.getValue() == 0){
                     Thread.sleep(1000);
                     if (other_player == Application.player){
                         Platform.runLater(() -> app.goToFailureGui());
@@ -46,7 +41,6 @@ public class Fight implements Runnable{
                     }
                     break;
                 }
-                System.out.println("Stary niedzwiedz mocno spi");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

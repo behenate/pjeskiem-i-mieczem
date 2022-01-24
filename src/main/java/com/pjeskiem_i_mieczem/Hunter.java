@@ -4,8 +4,8 @@ public class Hunter extends Player{
 
     public Hunter(){
         super("Łowca",6,1,7,2,4,"łowca.png");
-        this.hp = new Statistic("Hp", this.endurance.getValue()*7 );
-        this.currentHp = new Statistic("Hp", this.endurance.getValue()*7);
+        this.maxHp = new Statistic("Hp", this.endurance.getValue()*7 );
+        this.hp = new Statistic("Hp", this.endurance.getValue()*7);
     }
 
     public double getDamage(){
@@ -19,9 +19,12 @@ public class Hunter extends Player{
         double dodge_chance = Math.min(0.5f, dexterity.getValue()/100f);
         int dmg = (int)(other.getDamage() * (100-mage_reduction-warrior_reduction-hunter_reduction)/100);
         if (Math.random() > dodge_chance){
-            currentHp.setValue(currentHp.getValue() - dmg);
+            hp.setValue(hp.getValue() - dmg);
         }else {
             System.out.println("Dodge!");
         }
+    }
+    public void recalculateHp() {
+        super.recalculateHp(10);
     }
 }

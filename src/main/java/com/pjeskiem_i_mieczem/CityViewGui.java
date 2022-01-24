@@ -44,8 +44,8 @@ public class CityViewGui extends VBox {
             gold.setFont(Font.font("Z003",20));
 //            grid.add(gold, 15, 10, 1, 1);
             healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
-                    (int)(Config.windowHeight*0.02), (float) Application.player.hp.getValue(),
-                    (float) Application.player.currentHp.getValue());
+                    (int)(Config.windowHeight*0.02), (float) Application.player.maxHp.getValue(),
+                    (float) Application.player.hp.getValue());
 //            grid.add(healthBar, 15, 10, 1, 1);
             expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.expModifier.getValue()*100,
@@ -77,7 +77,8 @@ public class CityViewGui extends VBox {
         chillButton.setOnAction((event)->{
             this.chillOut();
             this.gold.setText("Twój stan konta to: "+Application.player.getGold()+" $$");
-            this.healthBar.updateBar((float) Application.player.currentHp.getValue());
+            this.healthBar.updateBar((float) Application.player.hp.getValue());
+
         });
         trainingButton.setOnAction((event)->{
             app.goToTheTraining();
@@ -99,12 +100,11 @@ public class CityViewGui extends VBox {
 
     private void chillOut(){
         int boost = 10;
-        if(Application.player.currentHp.getValue() < Application.player.hp.getValue()){
+        if(Application.player.hp.getValue() < Application.player.maxHp.getValue()){
             Application.player.gold -= 10;
-            Application.player.currentHp.setValue(Application.player.currentHp.getValue()+boost);
+            Application.player.hp.setValue(Math.min(Application.player.maxHp.getValue(), Application.player.hp.getValue()+boost));
         }
     }
-
     private void setBack(){
         BackgroundSize backgroundSize = new BackgroundSize(900,
                 700,

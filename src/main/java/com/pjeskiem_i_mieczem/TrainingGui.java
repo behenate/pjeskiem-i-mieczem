@@ -7,14 +7,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
+import javafx.scene.robot.Robot;
+
 
 
 public class TrainingGui extends VBox {
     private final int plusButtonWidth = (int)(Config.windowWidth*0.024);
     private final int plusButtonHeight = (int)(Config.windowHeight*0.04);
     private final Label availablePointsLabel;
-
+    private final Application app;
     public TrainingGui(Application app){
+        this.app = app;
 //      Setup sizes
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
@@ -45,6 +49,7 @@ public class TrainingGui extends VBox {
 
 //      Setup action of going to the city (without changing window)
         cityButton.setOnAction((event)->{
+            Application.player.recalculateHp();
             app.goToTheCity();
         });
     }
@@ -58,9 +63,19 @@ public class TrainingGui extends VBox {
         valueLabel.setMinWidth(40);
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
+        Popup strengthPopup = new Popup();
+        strengthPopup.getContent().addAll(new ImageButton("Siła siła", 200, 200, "cloud.png"));
 
+        Robot robot = new Robot();
+
+        Runnable showPopup= ()->{
+            strengthPopup.setX(robot.getMouseX()+10);
+            strengthPopup.setY(robot.getMouseY()-100);
+            strengthPopup.show(app.stage);
+        };
+        Runnable hidePopup = strengthPopup::hide;
 //      Setup button and its action
-        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png" );
+        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png", showPopup, hidePopup );
         improveButton.setOnAction((event)->{
             if(Application.player.skillPoints > 0) {
                 stat.setValue(stat.getValue() + 1);
