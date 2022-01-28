@@ -50,7 +50,7 @@ public class CityViewGui extends VBox {
                     (float) Application.player.hp.getValue());
 //            grid.add(healthBar, 15, 10, 1, 1);
             expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
-                    (int)(Config.windowHeight*0.02), (float) Application.player.expModifier.getValue()*100,
+                    (int)(Config.windowHeight*0.02), (float) Application.player.expToNextLevel,
                     (float) Application.player.exp.getValue(), "#f0e6b1");
             VBox statsContainer = new VBox(gold,healthBar, expBar);
             statsContainer.setSpacing(10);

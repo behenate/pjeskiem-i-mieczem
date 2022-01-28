@@ -20,12 +20,13 @@ public abstract class Player {
     protected Statistic intelligence;
     protected Statistic luck;
     protected Statistic exp;
-    protected Statistic expModifier;
+    protected double expModifier;
     protected int level;
     protected String imagePath;
     protected Image image;
     protected ImageView imageView;
     protected int skillPoints;
+    protected int expToNextLevel;
 
     public Player(String className, Integer endurance, Integer strength, Integer dexterity,
                   Integer intelligence, Integer luck, String imagePath){
@@ -35,7 +36,8 @@ public abstract class Player {
         this.dexterity = new Statistic("Zręczność", dexterity);
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
-        this.expModifier = new Statistic("ExpModifier", 1.2);
+        this.expModifier = 1.2;
+        this.expToNextLevel = (int) (this.expModifier * 100);
         this.imagePath = imagePath;
         this.gold = 500;
         this.level = 1;
@@ -85,13 +87,16 @@ public abstract class Player {
     }
 
     public void checkLevelUp() {
-        if (this.exp.getValue() >= this.expModifier.getValue() * 100) {
+        if (this.exp.getValue() >= this.expToNextLevel) {
             this.level += 1;
             this.skillPoints += 4;
-            this.expModifier.setValue(this.expModifier.getValue()+0.1);
+            this.expModifier = this.expModifier + 0.1;
+            this.expToNextLevel *= this.expModifier;
         }
     }
+
     public abstract void recalculateHp();
+
     public void recalculateHp(int hpMultiplier){
         double oldHp = this.maxHp.getValue();
         double newHp = this.endurance.getValue()*hpMultiplier;
