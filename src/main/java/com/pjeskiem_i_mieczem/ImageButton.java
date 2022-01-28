@@ -6,7 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+
 import java.util.Date;
+
+import static java.awt.Color.white;
 
 
 // Class that extends the regular JavaFX button but uses custom graphics as background

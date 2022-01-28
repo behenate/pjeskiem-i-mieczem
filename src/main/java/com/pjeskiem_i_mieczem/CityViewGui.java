@@ -3,8 +3,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.robot.Robot;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 
 public class CityViewGui extends VBox {
     GridPane grid = new GridPane();
@@ -59,12 +61,26 @@ public class CityViewGui extends VBox {
 //      Setup buttons and their sizes
         ImageButton arenaButton = new ImageButton("Idź na arenę", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_left.png");
-        ImageButton chillButton = new ImageButton("Idź na suczki", buttonWidth, buttonHeight,
-                "buttons/wooden_arrow_right.png");
         ImageButton trainingButton = new ImageButton("Idź na trening", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_right.png");
         ImageButton menuButton = new ImageButton("Idź do menu", buttonWidth, buttonHeight,
                 "buttons/wooden_arrow_left.png");
+
+        Popup cashPopup = new Popup();
+        cashPopup.getContent().addAll(new ImageButton("10 $$", 100, 60, "buttons/dymek_raw.png"));
+
+        Robot robot = new Robot();
+
+        Runnable showPopup = ()->{
+            cashPopup.setX(robot.getMouseX()+40);
+            cashPopup.setY(robot.getMouseY()-30);
+            cashPopup.show(app.stage);
+        };
+        Runnable hidePopup = cashPopup::hide;
+
+        ImageButton chillButton = new ImageButton("Idź na suczki", buttonWidth, buttonHeight,
+                "buttons/wooden_arrow_right.png", showPopup, hidePopup);
+
         arenaButton.setMinWidth(buttonWidth);
         chillButton.setMinWidth(buttonWidth);
         trainingButton.setMinWidth(buttonWidth);

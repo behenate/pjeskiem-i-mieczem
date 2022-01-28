@@ -24,7 +24,7 @@ public class WelcomeScreenGui extends HBox {
 //      Setup gui elemets
         Text titleText = new Text("PJESKIEM I \n \t MIECZEM \n");
         titleText.setFont(Font.font("Z003",50));
-        ImageButton startButton = new ImageButton("Start", buttonWidth, buttonHeight, "buttons/button_0.png", ()-> System.out.println("Pol sekundy zycia jak krew w piach"), null);
+        ImageButton startButton = new ImageButton("Start", buttonWidth, buttonHeight, "buttons/button_0.png");
 
         ImageButton leaderboardButton = new ImageButton("Leaderboard", buttonWidth, buttonHeight, "buttons/button_0.png");
         ImageButton exitButton = new ImageButton("Exit", buttonWidth, buttonHeight, "buttons/button_0.png");
