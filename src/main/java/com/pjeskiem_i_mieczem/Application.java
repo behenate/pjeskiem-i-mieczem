@@ -42,12 +42,11 @@ public class Application extends javafx.application.Application {
 
 
     public void goToTheArena(){
-        Player hunterPreset = new Hunter();
-        hunterPreset.setName("Dino");
-        Player warriorPreset = new Warrior();
-        warriorPreset.setName("Złoty");
-        FightGui fightGui = new FightGui(warriorPreset);
-        Fight fight = new Fight(this, fightGui,warriorPreset);
+        EnemyGenerator generator = new EnemyGenerator(0.8f, 1);
+        Player enemy = generator.getEnemy();
+        enemy.name = "Złoty :<";
+        FightGui fightGui = new FightGui(enemy);
+        Fight fight = new Fight(this, fightGui, enemy);
         Thread fightThread = new Thread(fight);
         fightThread.start();
         Scene scene = new Scene(fightGui, Config.windowWidth, Config.windowHeight);

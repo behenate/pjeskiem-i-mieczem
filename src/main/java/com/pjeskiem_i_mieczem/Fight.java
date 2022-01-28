@@ -6,6 +6,7 @@ public class Fight implements Runnable{
 
     private Player p2;
     private Application app;
+
     public Fight(Application app, FightGui gui, Player p2){
         this.gui = gui;
         this.p2 = p2;

@@ -1,6 +1,15 @@
 package com.pjeskiem_i_mieczem;
 
 public class Mage extends Player{
+
+    // Mage which accepts stats in order: Strength, dexterity, luck, intelligence, endurance
+    public Mage(int[] stats){
+        super("Mag",stats[4],stats[0],stats[1],stats[3],stats[2],"mage.png");
+        this.maxHp = new Statistic("Hp", this.endurance.getValue()*5);
+        this.hp = new Statistic("Hp", this.endurance.getValue()*5);
+    }
+
+
     public Mage(){
         super("Mag",6,1,1,8,6,"mage.png");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*5);

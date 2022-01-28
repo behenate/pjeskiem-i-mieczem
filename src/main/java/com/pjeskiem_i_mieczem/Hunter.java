@@ -1,7 +1,12 @@
 package com.pjeskiem_i_mieczem;
 
 public class Hunter extends Player{
-
+    // Mage which accepts stats in order: Strength, dexterity, luck, intelligence, endurance
+    public Hunter(int[] stats){
+        super("Łowca",stats[4],stats[0],stats[1],stats[3],stats[2],"łowca.png");
+        this.maxHp = new Statistic("Hp", this.endurance.getValue()*7 );
+        this.hp = new Statistic("Hp", this.endurance.getValue()*7);
+    }
     public Hunter(){
         super("Łowca",6,1,7,2,4,"łowca.png");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*7 );
