@@ -17,6 +17,7 @@ public class TrainingGui extends VBox {
     private final int plusButtonHeight = (int)(Config.windowHeight*0.04);
     private final Label availablePointsLabel;
     private final Application app;
+    private final Robot robot = new Robot();
     public TrainingGui(Application app){
         this.app = app;
 //      Setup sizes
@@ -63,19 +64,15 @@ public class TrainingGui extends VBox {
         valueLabel.setMinWidth(40);
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
-        Popup strengthPopup = new Popup();
-        strengthPopup.getContent().addAll(new ImageButton("Heloł", 100, 100, "cloud.png"));
-
-        Robot robot = new Robot();
-
-        Runnable showPopup= ()->{
-            strengthPopup.setX(robot.getMouseX()+10);
-            strengthPopup.setY(robot.getMouseY()-50);
-            strengthPopup.show(app.stage);
+        Popup popup = new Popup();
+        popup.getContent().addAll(new ImageButton(stat.getDescription(), stat.getDescription().length()*8, 100, "cloud.png"));
+        Runnable showPopup = () -> {
+            popup.setX(robot.getMouseX()+10);
+            popup.setY(robot.getMouseY()-50);
+            popup.show(app.stage);
         };
-        Runnable hidePopup = strengthPopup::hide;
 //      Setup button and its action
-        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png", showPopup, hidePopup );
+        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png", showPopup, popup::hide );
         improveButton.setOnAction((event)->{
             if(Application.player.skillPoints > 0) {
                 stat.setValue(stat.getValue() + 1);

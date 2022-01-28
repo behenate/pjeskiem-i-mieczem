@@ -6,7 +6,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
 public class Statistic{
-    private String name;
+    private final String name;
+    private String description = "";
     private double value;
     public Statistic(String name, double value){
         this.name = name;
@@ -20,6 +21,12 @@ public class Statistic{
 
     public void setValue(double value){
         this.value = value;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return description;
     }
 
     public HBox getLabel(){

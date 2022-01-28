@@ -82,7 +82,7 @@ public abstract class Player {
 
     public void addGold(double value){this.gold += value;}
 
-    public void takeDamage(Player other){
+    public void takeDamage(Player other, float multiplier){
         this.hp.setValue(this.hp.getValue()-1);
     }
 
@@ -103,6 +103,7 @@ public abstract class Player {
         this.maxHp.setValue(newHp);
         this.hp.setValue(this.hp.getValue()+newHp-oldHp);
     }
+
 
     public double getDamage(){
         return 1;
