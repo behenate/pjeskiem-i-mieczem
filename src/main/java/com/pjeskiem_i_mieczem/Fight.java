@@ -33,7 +33,7 @@ public class Fight implements Runnable{
                         Platform.runLater(() -> app.goToFailureGui());
                     }
                     else {
-                        double wonExp = p2.exp.getValue() * (Math.random() * 9.9 + 0.1 / (double) 100);
+                        double wonExp = p2.exp.getValue() * (Math.random() * 9.9 + 0.1) / (double) 100;
                         Application.player.exp.setValue(Application.player.exp.getValue()+wonExp);
                         Application.player.checkLevelUp();
                         Application.player.addGold(p2.gold * (Math.random() * 24 + 1) / (double) 100);

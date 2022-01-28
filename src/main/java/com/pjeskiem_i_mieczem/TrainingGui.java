@@ -64,13 +64,13 @@ public class TrainingGui extends VBox {
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
         Popup strengthPopup = new Popup();
-        strengthPopup.getContent().addAll(new ImageButton("Siła siła", 200, 200, "cloud.png"));
+        strengthPopup.getContent().addAll(new ImageButton("Heloł", 100, 100, "cloud.png"));
 
         Robot robot = new Robot();
 
         Runnable showPopup= ()->{
             strengthPopup.setX(robot.getMouseX()+10);
-            strengthPopup.setY(robot.getMouseY()-100);
+            strengthPopup.setY(robot.getMouseY()-50);
             strengthPopup.show(app.stage);
         };
         Runnable hidePopup = strengthPopup::hide;
