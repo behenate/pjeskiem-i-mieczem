@@ -1,6 +1,8 @@
 package com.pjeskiem_i_mieczem;
 import javafx.application.Platform;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,6 +13,7 @@ public class Fight implements Runnable{
 
     private Player p2;
     private Application app;
+
     public Fight(Application app, FightGui gui, Player p2){
         this.gui = gui;
         this.p2 = p2;
@@ -20,14 +23,15 @@ public class Fight implements Runnable{
     @Override
     public void run() {
         Player[] players = {Application.player,p2};
-        int current_player_idx = 0;
+        int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);;
         while(true){
             try {
                 Player current_player = players[current_player_idx];
                 Player other_player = players[(current_player_idx+1)%2];
                 Thread.sleep(1000);
-                other_player.takeDamage(current_player);
+                other_player.takeDamage(current_player, 0.3f);
                 current_player_idx = (current_player_idx + 1)%2;
+
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
                 Platform.runLater(()->{
                     gui.updateFightGui();
