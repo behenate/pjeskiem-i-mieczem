@@ -8,6 +8,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class CityViewGui extends VBox {
     GridPane grid = new GridPane();
     Application app;
@@ -52,6 +55,7 @@ public class CityViewGui extends VBox {
             expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.expToNextLevel,
                     (float) Application.player.exp.getValue(), "#f0e6b1");
+
             VBox statsContainer = new VBox(gold,healthBar, expBar);
             statsContainer.setSpacing(10);
             statsContainer.setAlignment(Pos.CENTER);
@@ -99,10 +103,16 @@ public class CityViewGui extends VBox {
         trainingButton.setOnAction((event)->{
             app.goToTheTraining();
         });
-        trainingButton.setOnAction((event)->{
-            app.goToTheTraining();
-        });
+
         menuButton.setOnAction((event)->{
+            try {
+                FileOutputStream writer = new FileOutputStream("file.txt");
+                writer.write(("").getBytes());
+                writer.close();
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
+            Application.player.saveProgress();
             app.goToTheStart();
         });
         //grid.setGridLinesVisible(true);

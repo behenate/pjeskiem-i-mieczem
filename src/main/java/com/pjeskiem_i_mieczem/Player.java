@@ -8,7 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public abstract class Player {
+import java.io.*;
+
+public abstract class Player implements Serializable {
     protected String name;
     protected String className;
     protected Statistic maxHp;
@@ -102,6 +104,17 @@ public abstract class Player {
         double newHp = this.endurance.getValue()*hpMultiplier;
         this.maxHp.setValue(newHp);
         this.hp.setValue(this.hp.getValue()+newHp-oldHp);
+    }
+
+    public void saveProgress() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("src/main/resources/leaderboard/save");
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(this);
+            objectOut.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public double getDamage(){

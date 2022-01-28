@@ -1,6 +1,11 @@
 package com.pjeskiem_i_mieczem;
 import javafx.application.Platform;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Fight implements Runnable{
     private FightGui gui;
 
@@ -30,14 +35,17 @@ public class Fight implements Runnable{
                 if (other_player.hp.getValue() == 0){
                     Thread.sleep(1000);
                     if (other_player == Application.player){
+                        this.clearFile();
                         Platform.runLater(() -> app.goToFailureGui());
                     }
                     else {
-                        System.out.println(Application.player.expToNextLevel);
                         double wonExp = p2.exp.getValue() * (Math.random() * 9.9 + 0.1) / (double) 100;
                         Application.player.exp.setValue(Application.player.exp.getValue() + wonExp);
                         Application.player.checkLevelUp();
                         Application.player.addGold(p2.gold * (Math.random() * 24 + 1) / (double) 100);
+
+                        this.clearFile();
+                        Application.player.saveProgress();
                         Platform.runLater(() -> app.goToVictoryGui());
                     }
                     break;
@@ -46,6 +54,15 @@ public class Fight implements Runnable{
                 e.printStackTrace();
             }
 
+        }
+    }
+    private void clearFile() {
+        try {
+            FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");
+            writer.write(("").getBytes());
+            writer.close();
+        }catch(IOException ex){
+            ex.printStackTrace();
         }
     }
 }
