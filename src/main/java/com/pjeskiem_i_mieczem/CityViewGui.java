@@ -59,19 +59,19 @@ public class CityViewGui extends VBox {
             VBox statsContainer = new VBox(gold,healthBar, expBar);
             statsContainer.setSpacing(10);
             statsContainer.setAlignment(Pos.CENTER);
-            grid.add(statsContainer, 15, 9, 1, 1);
+            grid.add(statsContainer, 8, 2, 1, 1);
         }
 
 //      Setup buttons and their sizes
         ImageButton arenaButton = new ImageButton("Idź na arenę", buttonWidth, buttonHeight,
-                "buttons/wooden_arrow_left.png");
+                "buttons/arrow_left.gif");
         ImageButton trainingButton = new ImageButton("Idź na trening", buttonWidth, buttonHeight,
-                "buttons/wooden_arrow_right.png");
+                "buttons/arrow_right.gif");
         ImageButton menuButton = new ImageButton("Idź do menu", buttonWidth, buttonHeight,
-                "buttons/wooden_arrow_left.png");
+                "buttons/arrow_left.gif");
 
         Popup cashPopup = new Popup();
-        cashPopup.getContent().addAll(new ImageButton("10 $$", 100, 60, "buttons/dymek_raw.png"));
+        cashPopup.getContent().addAll(new ImageButton("10 $$", 100, 60, "buttons/dymek.gif"));
 
         Robot robot = new Robot();
 
@@ -83,7 +83,7 @@ public class CityViewGui extends VBox {
         Runnable hidePopup = cashPopup::hide;
 
         ImageButton chillButton = new ImageButton("Idź na suczki", buttonWidth, buttonHeight,
-                "buttons/wooden_arrow_right.png", showPopup, hidePopup);
+                "buttons/arrow_right.gif", showPopup, hidePopup);
 
         arenaButton.setMinWidth(buttonWidth);
         chillButton.setMinWidth(buttonWidth);
@@ -106,7 +106,7 @@ public class CityViewGui extends VBox {
 
         menuButton.setOnAction((event)->{
             try {
-                FileOutputStream writer = new FileOutputStream("file.txt");
+                FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");
                 writer.write(("").getBytes());
                 writer.close();
             }catch(IOException ex){
@@ -118,10 +118,10 @@ public class CityViewGui extends VBox {
         //grid.setGridLinesVisible(true);
 //      add elements to grid
         grid.add(titleText, 7, 0, 1, 2);
-        grid.add(arenaButton, 3, 5, 1, 1);
-        grid.add(menuButton, 3, 6, 1, 1);
-        grid.add(trainingButton, 5, 5, 1, 2);
-        grid.add(chillButton, 5, 6, 1, 1);
+        grid.add(arenaButton, 3, 5, 2, 1);
+        grid.add(menuButton, 3, 6, 2, 1);
+        grid.add(trainingButton, 6, 5, 1, 2);
+        grid.add(chillButton, 6, 6, 1, 1);
     }
 
     private void chillOut(){
@@ -138,7 +138,7 @@ public class CityViewGui extends VBox {
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/cityView.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/cityView.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,

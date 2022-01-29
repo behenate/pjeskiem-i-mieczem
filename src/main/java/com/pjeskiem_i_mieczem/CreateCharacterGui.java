@@ -41,8 +41,8 @@ public class CreateCharacterGui extends VBox {
         TextField characterNameField = new TextField();
         characterNameField.setText("Pjeseł");
 
-        ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/arrow_left.png");
-        ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/arrow_right.png");
+        ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_left.gif");
+        ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_right.gif");
         ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/button_0.png" );
 
 //        Apply sizes
