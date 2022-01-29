@@ -5,7 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
-public class Statistic{
+import java.io.Serializable;
+
+public class Statistic implements Serializable {
     private final String name;
     private String description = "";
     private double value;
