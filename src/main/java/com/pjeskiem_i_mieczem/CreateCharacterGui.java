@@ -102,7 +102,7 @@ public class CreateCharacterGui extends VBox {
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/createCharacterView.gif"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/createCharacterViewBig.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
