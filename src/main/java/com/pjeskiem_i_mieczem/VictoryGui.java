@@ -27,7 +27,7 @@ public class VictoryGui extends VBox{
         scoreLabel.setTextFill(Color.WHITESMOKE);
 
 //      Setup buttons
-        ImageButton cityButton = new ImageButton("Przejdź do miasta", buttonWidth, buttonHeight, "buttons/button_1.png");
+        ImageButton cityButton = new ImageButton("Przejdź do miasta", buttonWidth, buttonHeight, "buttons/button6.gif");
         cityButton.setOnAction((event)->{
             main.goToTheCity();
         });

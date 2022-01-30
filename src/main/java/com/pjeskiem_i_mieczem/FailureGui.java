@@ -28,11 +28,11 @@ public class FailureGui extends VBox {
 
 //      Setup buttons
         //jakiś błąd z zapisem do rankingu (!!!)
-        ImageButton saveButton = new ImageButton("Zapisz wynik", buttonWidth, buttonHeight, "buttons/button_1.png");
+        ImageButton saveButton = new ImageButton("Zapisz wynik", buttonWidth, buttonHeight, "buttons/button6.gif");
         saveButton.setOnAction((event)->{
             leaderboardGui.saveToLeaderboard();
         });
-        ImageButton menuButton = new ImageButton("Zacznij od nowa", buttonWidth, buttonHeight, "buttons/button_1.png");
+        ImageButton menuButton = new ImageButton("Zacznij od nowa", buttonWidth, buttonHeight, "buttons/button6.gif");
         menuButton.setOnAction((event)->{
             app.goToTheStart();
         });

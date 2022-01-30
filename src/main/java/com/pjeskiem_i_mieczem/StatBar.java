@@ -23,7 +23,7 @@ public class StatBar extends HBox{
 
 //    Bar with progress text
     public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue, String backgroundColour){
-        this.width = width - 100;
+        this.width = width;
         this.showText = showText;
         bar.setMinHeight(height);
         bar.setMaxHeight(height);

@@ -90,7 +90,7 @@ public abstract class Player implements Serializable {
         imageView.setFitWidth(width * 0.7);
         imageView.setFitHeight(width * 0.7);
         VBox playerCard = new VBox(playerNameLabel, imageView, healthBar, statCard);
-        playerCard.setAlignment(Pos.TOP_LEFT);
+        playerCard.setAlignment(Pos.CENTER);
         return playerCard;
     }
 

@@ -2,9 +2,6 @@ package com.pjeskiem_i_mieczem;
 import javafx.application.Platform;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 

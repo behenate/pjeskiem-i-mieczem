@@ -36,8 +36,8 @@ public class CityViewGui extends VBox {
         for(int i = 0; i < 30; i++){
             Label label = new Label(" ");
             grid.add(label, i , i, 1, 1);
-            grid.getRowConstraints().add(new RowConstraints(Config.windowHeight*0.05*16/9));
-            grid.getColumnConstraints().add(new ColumnConstraints(Config.windowWidth*0.05));
+            grid.getRowConstraints().add(new RowConstraints(Config.windowHeight*0.025*16/9));
+            grid.getColumnConstraints().add(new ColumnConstraints(Config.windowWidth*0.025));
         }
 
 //      Setup gui elements
@@ -47,11 +47,9 @@ public class CityViewGui extends VBox {
         if(Application.player != null){
             gold = new Text("Twój stan konta to: "+Application.player.getGold()+" $$");
             gold.setFont(Font.font("Z003",20));
-//            grid.add(gold, 15, 10, 1, 1);
             healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.maxHp.getValue(),
                     (float) Application.player.hp.getValue());
-//            grid.add(healthBar, 15, 10, 1, 1);
             expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.expToNextLevel,
                     (float) Application.player.exp.getValue(), "#f0e6b1");
@@ -59,7 +57,7 @@ public class CityViewGui extends VBox {
             VBox statsContainer = new VBox(gold,healthBar, expBar);
             statsContainer.setSpacing(10);
             statsContainer.setAlignment(Pos.CENTER);
-            grid.add(statsContainer, 8, 2, 1, 1);
+            grid.add(statsContainer, 16, 5, 1, 1);
         }
 
 //      Setup buttons and their sizes
@@ -117,11 +115,11 @@ public class CityViewGui extends VBox {
         });
         //grid.setGridLinesVisible(true);
 //      add elements to grid
-        grid.add(titleText, 7, 0, 1, 2);
-        grid.add(arenaButton, 3, 5, 2, 1);
-        grid.add(menuButton, 3, 6, 2, 1);
-        grid.add(trainingButton, 6, 5, 1, 2);
-        grid.add(chillButton, 6, 6, 1, 1);
+        grid.add(titleText, 14, 1, 1, 2);
+        grid.add(arenaButton, 7, 11, 2, 1);
+        grid.add(menuButton, 7, 13, 2, 1);
+        grid.add(trainingButton, 11, 11, 1, 2);
+        grid.add(chillButton, 11, 13, 1, 1);
     }
 
     private void chillOut(){

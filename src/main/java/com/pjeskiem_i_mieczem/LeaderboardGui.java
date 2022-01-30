@@ -2,8 +2,8 @@ package com.pjeskiem_i_mieczem;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.*;
@@ -16,12 +16,13 @@ public class LeaderboardGui extends VBox {
         this.setPrefHeight(Config.windowWidth);
         int buttonWidth = (int) (Config.windowWidth*0.3);
         int buttonHeight = (int)(Config.windowHeight*0.1);
+        this.setBack();
 
 //      Setup gui elemets
-        Text titleText = new Text("Ranking");
+        Text titleText = new Text("Ranking \n");
         titleText.setFont(Font.font("Z003",50));
         HBox table = this.uploadTable();
-        ImageButton menuButton = new ImageButton("Wróć do menu", buttonWidth, buttonHeight, "buttons/button_0.png");
+        ImageButton menuButton = new ImageButton("Wróć do menu", buttonWidth, buttonHeight, "buttons/button6.gif");
 
 //      Setup events
         menuButton.setOnAction((event)->{
@@ -77,5 +78,19 @@ public class LeaderboardGui extends VBox {
         } catch (IOException e) {
         e.printStackTrace();
         }
+    }
+    private void setBack(){
+        BackgroundSize backgroundSize = new BackgroundSize(900,
+                700,
+                true,
+                true,
+                true,
+                false);
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/leaderboard.gif"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+        this.setBackground(new Background(image));
     }
 }
