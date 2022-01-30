@@ -67,12 +67,12 @@ public class TrainingGui extends VBox {
         Popup popup = new Popup();
         popup.getContent().addAll(new ImageButton(stat.getDescription(), stat.getDescription().length()*8, 100, "cloud.png"));
         Runnable showPopup = () -> {
-            popup.setX(robot.getMouseX()+10);
+            popup.setX(robot.getMouseX()+20);
             popup.setY(robot.getMouseY()-50);
             popup.show(app.stage);
         };
 //      Setup button and its action
-        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.png", showPopup, popup::hide );
+        ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.gif", showPopup, popup::hide );
         improveButton.setOnAction((event)->{
             if(Application.player.skillPoints > 0) {
                 stat.setValue(stat.getValue() + 1);
