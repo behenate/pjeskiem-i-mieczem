@@ -2,21 +2,21 @@ package com.pjeskiem_i_mieczem;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.layout.StackPane;
 
+
+
 // Class showing how much of some thing is left
-public class StatBar extends HBox {
+public class StatBar extends HBox{
     StackPane bar = new StackPane();
     private final int width;
     double maxValue;
     private final Label textLabel = new Label();
     private final boolean showText;
 //    Bar without background
-    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue){
+    public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue) {
         this(colour, showText,width, height,maxValue, currentValue,"FFFFFF00");
 
     }

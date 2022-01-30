@@ -21,6 +21,8 @@ public class Application extends javafx.application.Application {
 //        VictoryGui victoryGui = new VictoryGui(this);
 
         Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
+        scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+
 //        Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
 //        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
         //Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);

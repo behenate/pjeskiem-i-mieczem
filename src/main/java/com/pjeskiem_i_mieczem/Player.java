@@ -1,5 +1,6 @@
 package com.pjeskiem_i_mieczem;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -25,16 +26,17 @@ public abstract class Player implements Serializable {
     protected double expModifier;
     protected int level;
     protected String imagePath;
-    protected Image image;
+    protected Image idleImage;
     protected ImageView imageView;
     protected int skillPoints;
     protected int expToNextLevel;
+    private Image attackingImage;
 
     public Player(String className, Integer endurance, Integer strength, Integer dexterity,
-                  Integer intelligence, Integer luck, String imagePath){
+                  Integer intelligence, Integer luck, String imagePath) {
         this.className = className;
-        this.endurance = new Statistic("Wytrzymałość",endurance);
-        this.strength = new Statistic("Siła",strength);
+        this.endurance = new Statistic("Wytrzymałość", endurance);
+        this.strength = new Statistic("Siła", strength);
         this.dexterity = new Statistic("Zręczność", dexterity);
         this.intelligence = new Statistic("Inteligencja", intelligence);
         this.luck = new Statistic("Szczęście", luck);
@@ -48,15 +50,28 @@ public abstract class Player implements Serializable {
         setImagePath(imagePath);
     }
 
-    public void setImagePath(String imagePath){
-        this.image = new Image(imagePath);
-        this.imageView = new ImageView(this.image);
+    //    Loading assumes that attack animation has the same name and path as the idle animation, but has _attacking added to name
+    public void setAttackImage(String idleImagePath) {
+        String[] parts = idleImagePath.split("\\.");
+        System.out.println(parts[0] + "_attacking" + parts[1]);
+        this.attackingImage = new Image(parts[0] + "_attacking." + parts[1]);
     }
-    public void setName(String name){
+
+    public Image getAttackImage() {
+        return this.attackingImage;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.idleImage = new Image(imagePath);
+        this.imageView = new ImageView(this.idleImage);
+        setAttackImage(imagePath);
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Node getStatsView(){
+    public Node getStatsView() {
         return new VBox(
                 maxHp.getLabel(),
                 strength.getLabel(),
@@ -66,26 +81,29 @@ public abstract class Player implements Serializable {
                 luck.getLabel()
         );
     }
-    public VBox getPlayerCard(int width){
+
+    public VBox getPlayerCard(int width) {
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true,width-20, (int)(Config.windowHeight*0.05), (float) maxHp.getValue(), (float) hp.getValue());
+        StatBar healthBar = new StatBar("#f7573e", true, width - 20, (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue());
         Node statCard = getStatsView();
-        imageView.setFitWidth(width*0.7);
-        imageView.setFitHeight(width*0.7);
+        imageView.setFitWidth(width * 0.7);
+        imageView.setFitHeight(width * 0.7);
         VBox playerCard = new VBox(playerNameLabel, imageView, healthBar, statCard);
         playerCard.setAlignment(Pos.CENTER);
         return playerCard;
     }
 
-    public int getGold(){
+    public int getGold() {
         return this.gold;
     }
 
-    public void addGold(double value){this.gold += value;}
+    public void addGold(double value) {
+        this.gold += value;
+    }
 
-    public void takeDamage(Player other, float multiplier){
-        this.hp.setValue(this.hp.getValue()-1);
+    public void takeDamage(Player other, float multiplier) {
+        this.hp.setValue(this.hp.getValue() - 1);
     }
 
     public void checkLevelUp() {
@@ -99,11 +117,11 @@ public abstract class Player implements Serializable {
 
     public abstract void recalculateHp();
 
-    public void recalculateHp(int hpMultiplier){
+    public void recalculateHp(int hpMultiplier) {
         double oldHp = this.maxHp.getValue();
-        double newHp = this.endurance.getValue()*hpMultiplier;
+        double newHp = this.endurance.getValue() * hpMultiplier;
         this.maxHp.setValue(newHp);
-        this.hp.setValue(this.hp.getValue()+newHp-oldHp);
+        this.hp.setValue(this.hp.getValue() + newHp - oldHp);
     }
 
 
@@ -118,7 +136,23 @@ public abstract class Player implements Serializable {
         }
     }
 
-    public double getDamage(){
+    public void playAttackAnimation(int duration) {
+        Thread animationThread = new Thread(() -> {
+            try {
+                Platform.runLater(() -> this.imageView.setImage(this.attackingImage));
+                Thread.sleep(duration);
+                Platform.runLater(() -> this.imageView.setImage(this.idleImage));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        animationThread.start();
+    }
+
+    public double getDamage() {
         return 1;
+    }
+    public void flipImageView(){
+        this.imageView.setScaleX(this.imageView.getScaleX()*(-1));
     }
 }

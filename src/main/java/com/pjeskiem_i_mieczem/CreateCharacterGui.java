@@ -1,13 +1,11 @@
 package com.pjeskiem_i_mieczem;
 
-import com.pjeskiem_i_mieczem.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -28,8 +26,8 @@ public class CreateCharacterGui extends VBox {
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
         int arrowButtonSize = (int) (Config.windowWidth*0.03);
-        int navigationButtonWidth = (int)(Config.windowWidth*0.1);
-        int navigationButtonHeight = (int)(Config.windowHeight*0.05);
+        int navigationButtonWidth = (int)(Config.windowWidth*0.2);
+        int navigationButtonHeight = (int)(Config.windowHeight*0.1);
         int classImageSize = (int)(Config.windowHeight*0.3);
         int prefWidth = (int)(Config.windowWidth*0.2);
 
@@ -43,7 +41,7 @@ public class CreateCharacterGui extends VBox {
 
         ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_left.gif");
         ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_right.gif");
-        ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/button_0.png" );
+        ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/rounded_button.gif" );
 
 //        Apply sizes
         classImageView.setFitWidth(classImageSize);
@@ -89,11 +87,26 @@ public class CreateCharacterGui extends VBox {
         this.setAlignment(Pos.CENTER);
 
         this.getChildren().add(container);
+        setBack();
     }
     private void setCharacter(Player character){
-        classImageView.setImage(character.image);
+        classImageView.setImage(character.idleImage);
         classNameLabel.setText(character.className);
         statsBox.getChildren().clear();
         statsBox.getChildren().add(character.getStatsView());
+    }
+    private void setBack(){
+        BackgroundSize backgroundSize = new BackgroundSize(1920,
+                1080,
+                true,
+                true,
+                true,
+                false);
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/createCharacterViewBig.gif"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+        this.setBackground(new Background(image));
     }
 }

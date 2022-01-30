@@ -24,12 +24,14 @@ public class Fight implements Runnable{
     public void run() {
         Player[] players = {Application.player,p2};
         int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);;
+        p2.flipImageView();
         while(true){
             try {
                 Player current_player = players[current_player_idx];
                 Player other_player = players[(current_player_idx+1)%2];
                 Thread.sleep(1000);
-                other_player.takeDamage(current_player, 0.3f);
+                current_player.playAttackAnimation(400);
+                other_player.takeDamage(current_player, 0.01f);
                 current_player_idx = (current_player_idx + 1)%2;
 
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
