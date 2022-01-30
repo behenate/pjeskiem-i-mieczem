@@ -23,22 +23,23 @@ public class StatBar extends HBox{
 
 //    Bar with progress text
     public StatBar(String colour, Boolean showText, int width, int height, double maxValue, double currentValue, String backgroundColour){
-        this.width = width;
+        this.width = width - 100;
         this.showText = showText;
         bar.setMinHeight(height);
         bar.setMaxHeight(height);
         bar.setStyle("-fx-background-color:" + colour );
         textLabel.setAlignment(Pos.CENTER);
         bar.getChildren().addAll(textLabel);
-
         this.maxValue=maxValue;
         updateBar(currentValue);
         this.setStyle("-fx-background-color: " + backgroundColour);
-        this.setMinWidth(width);
+        this.setMinWidth(this.width);
+
+        this.setMaxWidth(this.width);
         this.getChildren().add(bar);
     }
     public void updateBar(double currentValue){
-        bar.setPrefWidth(Math.min(1, currentValue/maxValue)*width);
+        bar.setPrefWidth(Math.min(1, currentValue/maxValue)* this.width);
         if (showText)
             textLabel.setText(Math.round(currentValue) + "/"+ Math.round(maxValue));
     }

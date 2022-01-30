@@ -35,7 +35,7 @@ public class TrainingGui extends VBox {
 
         int cityButtonWidth = (int) (Config.windowWidth * 0.2);
         int cityButtonHeight = (int) (Config.windowWidth * 0.05);
-        ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button_0.png");
+        ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button6.gif");
         availablePointsLabel = new Label("Masz do wykorzystania: "+Application.player.skillPoints+" punktów");
         availablePointsLabel.setFont(Font.font("Z003",25));
 

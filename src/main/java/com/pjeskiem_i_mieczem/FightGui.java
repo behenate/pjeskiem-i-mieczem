@@ -39,7 +39,7 @@ public class FightGui extends VBox {
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/arena.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/arena.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,

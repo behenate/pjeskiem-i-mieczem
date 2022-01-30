@@ -85,12 +85,12 @@ public abstract class Player implements Serializable {
     public VBox getPlayerCard(int width) {
         Label playerNameLabel = new Label(name);
         playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true, width - 20, (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue());
+        StatBar healthBar = new StatBar("#f7573e", true, width - 10 , (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue());
         Node statCard = getStatsView();
         imageView.setFitWidth(width * 0.7);
         imageView.setFitHeight(width * 0.7);
         VBox playerCard = new VBox(playerNameLabel, imageView, healthBar, statCard);
-        playerCard.setAlignment(Pos.CENTER);
+        playerCard.setAlignment(Pos.TOP_LEFT);
         return playerCard;
     }
 
