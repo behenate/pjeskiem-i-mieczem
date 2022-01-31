@@ -2,9 +2,9 @@ package com.pjeskiem_i_mieczem;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
@@ -24,7 +24,7 @@ public class TrainingGui extends VBox {
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
         int imageSize = (int)(Config.windowHeight*0.3);
-
+        this.setBack();
 //      Setup gui elements
         Text titleText = new Text("Ulepsz swoją postać " + Application.player.name);
         titleText.setFont(Font.font("Z003",30));
@@ -100,5 +100,18 @@ public class TrainingGui extends VBox {
         return box;
     }
 
-
+    private void setBack(){
+        BackgroundSize backgroundSize = new BackgroundSize(900,
+                700,
+                true,
+                true,
+                true,
+                false);
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/background.png"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+        this.setBackground(new Background(image));
+    }
 }

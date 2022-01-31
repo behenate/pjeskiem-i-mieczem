@@ -1,6 +1,7 @@
 package com.pjeskiem_i_mieczem;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,7 +14,8 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-
+        Image icon = new Image("icon.png");
+        stage.getIcons().add(icon);
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
         CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
 //        TrainingGui trainingGui = new TrainingGui(4, this);

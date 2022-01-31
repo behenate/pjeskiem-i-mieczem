@@ -28,7 +28,7 @@ public class Fight implements Runnable{
                 Player other_player = players[(current_player_idx+1)%2];
                 Thread.sleep(1000);
                 current_player.playAttackAnimation(400);
-                other_player.takeDamage(current_player, 0.01f);
+                other_player.takeDamage(current_player, 1);
                 current_player_idx = (current_player_idx + 1)%2;
 
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));

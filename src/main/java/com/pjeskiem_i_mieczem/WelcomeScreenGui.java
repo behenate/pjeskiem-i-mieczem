@@ -1,8 +1,8 @@
 package com.pjeskiem_i_mieczem;
 
 import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -17,11 +17,12 @@ public class WelcomeScreenGui extends HBox {
         this.setPrefHeight(Config.windowWidth);
         int buttonWidth = (int) (Config.windowWidth*0.3);
         int buttonHeight = (int)(Config.windowHeight*0.1);
+        setBack();
 
 //      Setup gui elemets
         Text titleText = new Text("PJESKIEM I \n \t MIECZEM \n");
         titleText.setFont(Font.font("Z003",50));
-        ImageButton startButton = new ImageButton("New game 1234", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton startButton = new ImageButton("New game", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton loadButton = new ImageButton("Load game", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton leaderboardButton = new ImageButton("Leaderboard", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton exitButton = new ImageButton("Exit", buttonWidth, buttonHeight, "buttons/button6.gif");
@@ -75,5 +76,20 @@ public class WelcomeScreenGui extends HBox {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    private void setBack(){
+        BackgroundSize backgroundSize = new BackgroundSize(900,
+                700,
+                true,
+                true,
+                true,
+                false);
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/welcomeScreen.gif"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+        this.setBackground(new Background(image));
     }
 }

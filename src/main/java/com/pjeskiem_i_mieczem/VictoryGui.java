@@ -23,8 +23,7 @@ public class VictoryGui extends VBox{
         //Label expLabel = new Label("Masz: "+player.getGold());
         titleText.setFont(Font.font("Z003", FontWeight.BOLD, 45));
         scoreLabel.setFont(Font.font("Z003", FontWeight.BOLD, 25));
-        titleText.setTextFill(Color.WHITESMOKE);
-        scoreLabel.setTextFill(Color.WHITESMOKE);
+
 
 //      Setup buttons
         ImageButton cityButton = new ImageButton("Przejdź do miasta", buttonWidth, buttonHeight, "buttons/button6.gif");
