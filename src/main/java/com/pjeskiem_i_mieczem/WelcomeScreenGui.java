@@ -71,6 +71,7 @@ public class WelcomeScreenGui extends HBox {
             ObjectInputStream objectIn = new ObjectInputStream(file);
             Player player = (Player) objectIn.readObject();
             objectIn.close();
+            player.setImages();
             return player;
         } catch (Exception ex) {
             ex.printStackTrace();

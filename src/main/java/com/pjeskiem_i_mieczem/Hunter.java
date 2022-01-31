@@ -5,14 +5,14 @@ import javafx.application.Platform;
 public class Hunter extends Player {
     // Mage which accepts stats in order: Strength, dexterity, luck, intelligence, endurance
     public Hunter(int[] stats) {
-        super("Łowca", stats[4], stats[0], stats[1], stats[3], stats[2], "hunter.gif");
+        super("Łowca", stats[4], stats[0], stats[1], stats[3], stats[2], "characters/hunter.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue() * 7);
         this.hp = new Statistic("Hp", this.endurance.getValue() * 7);
         updateStatDescriptions();
     }
 
     public Hunter() {
-        super("Łowca", 6, 1, 100, 2, 4, "hunter.gif");
+        super("Łowca", 6, 1, 100, 2, 4, "characters/hunter.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue() * 7);
         this.hp = new Statistic("Hp", this.endurance.getValue() * 7);
         updateStatDescriptions();

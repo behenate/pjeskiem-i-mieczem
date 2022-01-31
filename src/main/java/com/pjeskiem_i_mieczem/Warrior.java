@@ -3,13 +3,13 @@ package com.pjeskiem_i_mieczem;
 public class Warrior extends Player{
     // Warrior which accepts stats in order: Strength, dexterity, luck, intelligence, endurance
     public Warrior(int[] stats){
-        super("Wojownik",stats[4],stats[0],stats[1],stats[3],stats[2],"warrior.gif");
+        super("Wojownik",stats[4],stats[0],stats[1],stats[3],stats[2], "characters/warrior.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*10);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
         updateStatDescriptions();
     }
     public Warrior(){
-        super("Wojownik",8,6,2,1,3,"warrior.gif");
+        super("Wojownik",8,6,2,1,3, "characters/warrior.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*10);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
 //        this.currentHp = new Statistic("Hp", 30);

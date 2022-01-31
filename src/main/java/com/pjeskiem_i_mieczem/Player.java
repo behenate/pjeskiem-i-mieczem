@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import javax.imageio.ImageIO;
 import java.io.*;
 
 public abstract class Player implements Serializable {
@@ -53,7 +54,7 @@ public abstract class Player implements Serializable {
     //    Loading assumes that attack animation has the same name and path as the idle animation, but has _attacking added to name
     public void setAttackImage(String idleImagePath) {
         String[] parts = idleImagePath.split("\\.");
-        System.out.println(parts[0] + "_attacking" + parts[1]);
+        //System.out.println(parts[0] + "_attacking" + parts[1]);
         this.attackingImage = new Image(parts[0] + "_attacking." + parts[1]);
     }
 
@@ -129,10 +130,24 @@ public abstract class Player implements Serializable {
         try {
             FileOutputStream fileOut = new FileOutputStream("src/main/resources/leaderboard/save");
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            this.imageView = null;
+            this.idleImage = null;
+            this.attackingImage = null;
             objectOut.writeObject(this);
             objectOut.close();
+            this.setImages();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void setImages(){
+        if(this instanceof Mage){
+            setImagePath("characters/mage.gif");
+        }else if(this instanceof Warrior){
+            setImagePath("characters/warrior.gif");
+        }else if(this instanceof Hunter){
+            setImagePath("characters/hunter.gif");
         }
     }
 
