@@ -44,7 +44,7 @@ public class VictoryGui extends VBox{
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/victory.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/victory.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
