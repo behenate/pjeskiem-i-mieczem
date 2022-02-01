@@ -107,7 +107,7 @@ public class TrainingGui extends VBox {
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/background.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/training.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,

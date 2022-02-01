@@ -4,3 +4,4 @@ Maciek;1000
 MopsMarek;1000
 Bernio;536
 Zuzinka;764
+Pjese³;500
