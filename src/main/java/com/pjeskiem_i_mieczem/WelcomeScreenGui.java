@@ -25,7 +25,7 @@ public class WelcomeScreenGui extends HBox {
         ImageButton startButton = new ImageButton("New game", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton loadButton = new ImageButton("Load game", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton leaderboardButton = new ImageButton("Leaderboard", buttonWidth, buttonHeight, "buttons/button6.gif");
-        ImageButton exitButton = new ImageButton("Exit", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton exitButton = new ImageButton("Exit czcionka 0123;", buttonWidth, buttonHeight, "buttons/button6.gif");
 
 //        Setup events
         startButton.setOnAction((event)->{

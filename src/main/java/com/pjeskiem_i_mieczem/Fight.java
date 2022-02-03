@@ -28,7 +28,7 @@ public class Fight implements Runnable{
                 Player other_player = players[(current_player_idx+1)%2];
                 Thread.sleep(1000);
                 current_player.playAttackAnimation(400);
-                other_player.takeDamage(current_player, 1);
+                other_player.takeDamage(current_player);
                 current_player_idx = (current_player_idx + 1)%2;
 
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
@@ -43,9 +43,11 @@ public class Fight implements Runnable{
                     }
                     else {
                         double wonExp = p2.exp.getValue() * (Math.random() * 9.9 + 0.1) / (double) 100;
+                        wonExp = (int)(wonExp*Config.expModifier);
                         Application.player.exp.setValue(Application.player.exp.getValue() + wonExp);
                         Application.player.checkLevelUp();
-                        Application.player.addGold(p2.gold * (Math.random() * 24 + 1) / (double) 100);
+                        double wonGold = (p2.gold * (Math.random() * 24 + 1) / (double) 100)*Config.goldModifier;
+                        Application.player.addGold(wonGold);
 
                         this.clearFile();
                         Application.player.saveProgress();

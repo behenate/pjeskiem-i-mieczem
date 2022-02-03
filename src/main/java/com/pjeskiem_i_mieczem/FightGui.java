@@ -17,17 +17,18 @@ public class FightGui extends VBox {
         this.setBack();
         updateFightGui();
         cardsContainer.setAlignment(Pos.CENTER);
-        cardsContainer.setSpacing(Config.windowWidth*0.15);
-        this.getChildren().addAll(titleText, cardsContainer, new Button("Halo"));
+        cardsContainer.setSpacing(Config.windowWidth*0.25);
+        this.getChildren().addAll(titleText, cardsContainer);
         this.setAlignment(Pos.TOP_CENTER);
-        this.setSpacing(Config.windowHeight*0.05);
+        this.setSpacing(Config.windowHeight*0.1);
     }
 
     public void updateFightGui(){
-        VBox p1Card = Application.player.getPlayerCard((int)(Config.windowWidth*0.3));
-        VBox p2Card = player2.getPlayerCard((int)(Config.windowWidth*0.3));
-        p1Card.setMaxWidth(Config.windowWidth*0.2);
-        p2Card.setMaxWidth(Config.windowWidth*0.2);
+        VBox p1Card = Application.player.getPlayerCard((int)(Config.windowWidth*0.25));
+        VBox p2Card = player2.getPlayerCard((int)(Config.windowWidth*0.25));
+        p1Card.setMaxWidth(Config.windowWidth*0.25);
+        p2Card.setMaxWidth(Config.windowWidth*0.25);
+        p2Card.setTranslateX(-Config.windowWidth*0.05);
         cardsContainer.getChildren().clear();
         cardsContainer.getChildren().addAll(p1Card, p2Card);
     }

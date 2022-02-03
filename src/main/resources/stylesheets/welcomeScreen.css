@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Litery';
+    src: url('../fonts/pjeskiem.ttf');
+}
+
+.root{
+    -fx-font-family: "Litery";
+    -fx-font-size: 20pt;
+}

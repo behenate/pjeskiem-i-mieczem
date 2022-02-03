@@ -85,9 +85,11 @@ public abstract class Player implements Serializable {
 
     public VBox getPlayerCard(int width) {
         Label playerNameLabel = new Label(name);
-        playerNameLabel.setFont(Font.font(29));
-        StatBar healthBar = new StatBar("#f7573e", true, width - 10 , (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue());
+        playerNameLabel.setStyle("-fx-font-size: 50; -fx-text-fill: #7efdfd");
+        StatBar healthBar = new StatBar("#f7573e", true, width - 10 ,
+                (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue(),"#f2afa5");
         Node statCard = getStatsView();
+        statCard.setTranslateX(width*0.1);
         imageView.setFitWidth(width * 0.7);
         imageView.setFitHeight(width * 0.7);
         VBox playerCard = new VBox(playerNameLabel, imageView, healthBar, statCard);
@@ -103,12 +105,12 @@ public abstract class Player implements Serializable {
         this.gold += value;
     }
 
-    public void takeDamage(Player other, float multiplier) {
+    public void takeDamage(Player other) {
         this.hp.setValue(this.hp.getValue() - 1);
     }
 
     public void checkLevelUp() {
-        if (this.exp.getValue() >= this.expToNextLevel) {
+        while (this.exp.getValue() >= this.expToNextLevel) {
             this.level += 1;
             this.skillPoints += 4;
             this.expModifier = this.expModifier + 0.1;

@@ -27,7 +27,6 @@ public class TrainingGui extends VBox {
         this.setBack();
 //      Setup gui elements
         Text titleText = new Text("Ulepsz swoją postać " + Application.player.name);
-        titleText.setFont(Font.font("Z003",30));
 
         ImageView playerImageView = Application.player.imageView;
         playerImageView.setFitWidth(imageSize);
@@ -65,7 +64,8 @@ public class TrainingGui extends VBox {
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
         Popup popup = new Popup();
-        popup.getContent().addAll(new ImageButton(stat.getDescription(), stat.getDescription().length()*8, 100, "cloud.png"));
+        popup.getContent().addAll(new ImageButton(stat.getDescription(), stat.getDescription().length()*8, 100, "buttons/infoPopupLong.gif"));
+        popup.getContent().get(0).setStyle("-fx-font-size: 15");
         Runnable showPopup = () -> {
             popup.setX(robot.getMouseX()+20);
             popup.setY(robot.getMouseY()-50);
@@ -88,7 +88,7 @@ public class TrainingGui extends VBox {
     }
 
     private VBox allStatsBox(){
-        VBox box = new VBox(15);
+        VBox box = new VBox(12);
         HBox statStrength = singleStatsBox(Application.player.strength);
         HBox statIntelligence = singleStatsBox(Application.player.intelligence);
         HBox statDexterity = singleStatsBox(Application.player.dexterity);

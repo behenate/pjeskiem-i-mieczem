@@ -29,7 +29,7 @@ public class CityViewGui extends VBox {
 //      Setup sizes
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowHeight);
-        int buttonWidth = (int) (Config.windowWidth*0.1);
+        int buttonWidth = (int) (Config.windowWidth*0.13);
         int buttonHeight = (int)(Config.windowHeight*0.05);
 
 //      setup grid
@@ -49,7 +49,7 @@ public class CityViewGui extends VBox {
             gold.setFont(Font.font("Z003",20));
             healthBar = new StatBar("#f7573e", true,(int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.maxHp.getValue(),
-                    (float) Application.player.hp.getValue());
+                    (float) Application.player.hp.getValue(), "#f2afa5");
             expBar = new StatBar("#ebcf34", true, (int)(Config.windowWidth*0.18),
                     (int)(Config.windowHeight*0.02), (float) Application.player.expToNextLevel,
                     (float) Application.player.exp.getValue(), "#f0e6b1");
@@ -116,10 +116,12 @@ public class CityViewGui extends VBox {
         //grid.setGridLinesVisible(true);
 //      add elements to grid
         grid.add(titleText, 14, 1, 1, 2);
-        grid.add(arenaButton, 7, 11, 2, 1);
-        grid.add(menuButton, 7, 13, 2, 1);
+        grid.add(arenaButton, 6, 11, 2, 1);
+        grid.add(menuButton, 6, 13, 2, 2);
         grid.add(trainingButton, 11, 11, 1, 2);
         grid.add(chillButton, 11, 13, 1, 1);
+        chillButton.setTranslateX(-5);
+        trainingButton.setTranslateX(-4);
     }
 
     private void chillOut(){

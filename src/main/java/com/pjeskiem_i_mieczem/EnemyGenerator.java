@@ -5,7 +5,7 @@ public class EnemyGenerator {
     int class_num = 0;
     private final Player enemy;
 
-    public EnemyGenerator(float minStatFraction, float maxStatFraction){
+    public EnemyGenerator(){
 //        Get random class number for enemy
         class_num = ThreadLocalRandom.current().nextInt(0, 2 + 1);
 //        How many points can enemy spend
@@ -17,7 +17,7 @@ public class EnemyGenerator {
         int[] enemyStats = new int[5];
         for (int i = 0; i < 5; i++) {
             enemyStats[i] = (int)(pointsProportions[class_num][i] * pointsToSpend *
-                    (minStatFraction + Math.random() * (maxStatFraction-minStatFraction)));
+                    (Config.enemyLowPointsModifier + Math.random() * (Config.enemyHighPointsModifier-Config.enemyLowPointsModifier)));
         }
         switch (class_num){
             case 0 ->

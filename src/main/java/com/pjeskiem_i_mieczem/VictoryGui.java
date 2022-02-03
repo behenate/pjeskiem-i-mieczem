@@ -18,8 +18,8 @@ public class VictoryGui extends VBox{
 //      Setup labels
         Label titleText = new Label("Brawo! \n Wygrałeeś!");
         Label scoreLabel = new Label("Twój aktualny stan konta to: "+Application.player.getGold());
-        titleText.setFont(Font.font("Z003", FontWeight.BOLD, 45));
-        scoreLabel.setFont(Font.font("Z003", FontWeight.BOLD, 25));
+        titleText.setStyle("-fx-font-size: 50");
+        scoreLabel.setStyle("-fx-font-size: 30");
 
 
 //      Setup buttons
@@ -44,7 +44,7 @@ public class VictoryGui extends VBox{
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/victory.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/victory.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,

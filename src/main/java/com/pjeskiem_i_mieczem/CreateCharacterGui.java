@@ -1,5 +1,6 @@
 package com.pjeskiem_i_mieczem;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -7,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 public class CreateCharacterGui extends VBox {
     private Image classImage;
@@ -26,16 +26,14 @@ public class CreateCharacterGui extends VBox {
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
         int arrowButtonSize = (int) (Config.windowWidth*0.03);
-        int navigationButtonWidth = (int)(Config.windowWidth*0.2);
-        int navigationButtonHeight = (int)(Config.windowHeight*0.1);
+        int navigationButtonWidth = (int)(Config.windowWidth*0.15);
+        int navigationButtonHeight = (int)(Config.windowHeight*0.05);
         int classImageSize = (int)(Config.windowHeight*0.3);
         int prefWidth = (int)(Config.windowWidth*0.2);
 
 //        Setup gui elemets
-        Text titleText = new Text("STWÓRZ \n \t PJESA");
-        titleText.setFont(Font.font("Z003",30));
 
-        Label characterNameLabel = new Label("Wybierz imje pjesa: ");
+        Label characterNameLabel = new Label("Wybierz imje pjesa ");
         TextField characterNameField = new TextField();
         characterNameField.setText("Pjeseł");
 
@@ -43,12 +41,7 @@ public class CreateCharacterGui extends VBox {
         ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_right.gif");
         ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/button6.gif" );
 
-//        Apply sizes
-        classImageView.setFitWidth(classImageSize);
-        classImageView.setFitHeight(classImageSize);
-        characterNameField.setMaxWidth(prefWidth);
-        classNameLabel.setPrefWidth(prefWidth - 2*arrowButtonSize);
-        characterNameField.setFont(Font.font(Config.windowWidth*0.012));
+
 
 //        Setup events
         prevClassButton.setOnAction((event)->{
@@ -74,9 +67,19 @@ public class CreateCharacterGui extends VBox {
 
 //      Add the gui elements to containers and base class
         HBox buttonsAndClassnameContainer = new HBox(prevClassButton, classNameLabel, nextClassButton);
+        buttonsAndClassnameContainer.setPadding(new Insets(0,Config.windowWidth*0.21,0,Config.windowWidth*0.2));
         statsBox.getChildren().addAll(buttonsAndClassnameContainer);
-        VBox container = new VBox(titleText, characterNameLabel, characterNameField, buttonsAndClassnameContainer, classImageView,statsBox, continueButton);
+        VBox nameContainer = new VBox(characterNameLabel, characterNameField);
+        VBox container = new VBox(nameContainer, buttonsAndClassnameContainer, classImageView,statsBox, continueButton);
 
+//        Apply sizes
+        buttonsAndClassnameContainer.setMinHeight(navigationButtonHeight+10);
+        classImageView.setFitWidth(classImageSize);
+        classImageView.setFitHeight(classImageSize);
+
+        characterNameField.setMaxWidth(prefWidth);
+        classNameLabel.setPrefWidth(prefWidth - 2*arrowButtonSize);
+        characterNameField.setFont(Font.font(Config.windowWidth*0.012));
 //      Setup alignments
         container.setAlignment(Pos.CENTER);
         statsBox.setAlignment(Pos.CENTER);
@@ -84,7 +87,19 @@ public class CreateCharacterGui extends VBox {
         buttonsAndClassnameContainer.setAlignment(Pos.CENTER);
         characterNameField.setAlignment(Pos.CENTER);
         classNameLabel.setAlignment(Pos.CENTER);
+
+        classImageView.setTranslateY(-Config.windowHeight*0.01f);
+        statsBox.setTranslateY(-Config.windowHeight*0.05f);
+        nameContainer.setTranslateY(-Config.windowHeight*0.018f);
+        buttonsAndClassnameContainer.setTranslateY(-Config.windowHeight*0.018);
+
+        continueButton.setMinHeight(navigationButtonHeight + 10);
+        nameContainer.setAlignment(Pos.CENTER);
         this.setAlignment(Pos.CENTER);
+        container.setPadding(new Insets(Config.windowHeight*0.25, 0, 0, 0));
+
+//        Setup font stylesheet
+        this.getStylesheets().add(getClass().getResource("/stylesheets/main.css").toExternalForm());
 
         this.getChildren().add(container);
         setBack();
