@@ -5,6 +5,3 @@ MopsMarek;1000
 Bernio;536
 Zuzinka;764
 Pjese³;500
-Pjese³;500
-Pjese³;500
-Pjese³;551

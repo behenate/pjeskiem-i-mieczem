@@ -3,7 +3,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -15,7 +14,7 @@ public class FailureGui extends VBox {
         this.leaderboardGui = leaderboard;
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
-        int buttonWidth = (int) (Config.windowWidth*0.3);
+        int buttonWidth = (int) (Config.windowWidth*0.2);
         int buttonHeight = (int)(Config.windowHeight*0.1);
 
 //      Setup labels
@@ -23,8 +22,6 @@ public class FailureGui extends VBox {
         Label scoreLabel = new Label("Twój wynik to: "+Application.player.getGold());
         titleText.setFont(Font.font("Z003", FontWeight.BOLD, 50));
         scoreLabel.setFont(Font.font("Z003", FontWeight.BOLD, 25));
-        titleText.setTextFill(Color.WHITESMOKE);
-        scoreLabel.setTextFill(Color.WHITESMOKE);
 
 //      Setup buttons
         //jakiś błąd z zapisem do rankingu (!!!)
@@ -53,7 +50,7 @@ public class FailureGui extends VBox {
                 true,
                 true,
                 false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/failure.png"),
+        BackgroundImage image = new BackgroundImage(new Image("backgrounds/failure.gif"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
