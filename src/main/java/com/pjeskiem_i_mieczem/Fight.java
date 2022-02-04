@@ -19,9 +19,13 @@ public class Fight implements Runnable{
 
     @Override
     public void run() {
+//        Two players that will fight
         Player[] players = {Application.player,p2};
         int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);;
+//        Flip enemy image
         p2.flipImageView();
+//        Alternate between players, take damage from each based on stats until one loses
+
         while(true){
             try {
                 Player current_player = players[current_player_idx];
