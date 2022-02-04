@@ -12,7 +12,7 @@ public class Hunter extends Player {
     }
 
     public Hunter() {
-        super("Łowca", 6, 1, 100, 2, 4, "characters/hunter.gif");
+        super("Łowca", 6, 1, 7, 2, 4, "characters/hunter.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue() * 7);
         this.hp = new Statistic("Hp", this.endurance.getValue() * 7);
         updateStatDescriptions();
