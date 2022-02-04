@@ -114,8 +114,8 @@ public abstract class Player implements Serializable {
         while (this.exp.getValue() >= this.expToNextLevel) {
             this.level += 1;
             this.skillPoints += 4;
-            this.expModifier = this.expModifier + 0.1;
-            this.expToNextLevel *= this.expModifier;
+            this.expModifier = this.expModifier + Config.expModifierOffset;
+            this.expToNextLevel = (int) (this.expToNextLevel + this.expToNextLevel * (this.expModifier-1) * Config.expCurveModifier);
         }
     }
 
