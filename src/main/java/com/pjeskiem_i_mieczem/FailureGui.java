@@ -28,6 +28,7 @@ public class FailureGui extends VBox {
         ImageButton saveButton = new ImageButton("Zapisz wynik", buttonWidth, buttonHeight, "buttons/button6.gif");
         saveButton.setOnAction((event)->{
             leaderboardGui.saveToLeaderboard();
+            app.goToTheStart();
         });
         ImageButton menuButton = new ImageButton("Zacznij od nowa", buttonWidth, buttonHeight, "buttons/button6.gif");
         menuButton.setOnAction((event)->{
