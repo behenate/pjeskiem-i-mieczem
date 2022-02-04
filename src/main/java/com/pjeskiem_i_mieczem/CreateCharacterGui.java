@@ -37,13 +37,12 @@ public class CreateCharacterGui extends VBox {
 
         Label characterNameLabel = new Label("Wybierz imje pjesa ");
         TextField characterNameField = new TextField();
+        Tools.addTextLimiter(characterNameField, 12);
         characterNameField.setText("Pjeseł");
 
         ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_left.gif");
         ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_right.gif");
         ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/button6.gif" );
-
-
 
 //        Setup events
         prevClassButton.setOnAction((event)->{
