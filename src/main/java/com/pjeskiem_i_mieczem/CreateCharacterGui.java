@@ -46,12 +46,10 @@ public class CreateCharacterGui extends VBox {
 
 //        Setup events
         prevClassButton.setOnAction((event)->{
-            System.out.println("Previous Class!");
             current_class = (current_class - 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
         nextClassButton.setOnAction((event)->{
-            System.out.println("Next Class!");
             current_class = (current_class + 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
