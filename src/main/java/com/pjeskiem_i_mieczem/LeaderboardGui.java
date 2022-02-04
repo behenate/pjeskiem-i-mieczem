@@ -7,6 +7,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class LeaderboardGui extends VBox {
@@ -41,6 +44,7 @@ public class LeaderboardGui extends VBox {
         scores.setAlignment(Pos.TOP_RIGHT);
         VBox names = new VBox();
         names.setAlignment(Pos.TOP_LEFT);
+        ArrayList<String[]> namesScores = new ArrayList<>();
         try {
             String line;
             String[] array = null;
@@ -48,16 +52,21 @@ public class LeaderboardGui extends VBox {
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 array = line.split(";");
-                Label name = new Label(array[0]);
-                name.setFont(Font.font("Z003",20));
-                Label score = new Label(array[1]);
-                score.setFont(Font.font("Z003",20));
-                names.getChildren().add(name);
-                scores.getChildren().add(score);
+                namesScores.add(array);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+        namesScores.sort(Comparator.comparingDouble(a -> Double.parseDouble(a[1])));
+        Collections.reverse(namesScores);
+        for (String[] elem:namesScores) {
+            Label name = new Label(elem[0]);
+            name.setFont(Font.font("Z003",20));
+            Label score = new Label(elem[1]);
+            score.setFont(Font.font("Z003",20));
+            names.getChildren().add(name);
+            scores.getChildren().add(score);
         }
         HBox table = new HBox(names, scores);
         table.setSpacing(15);

@@ -22,10 +22,10 @@ public class WelcomeScreenGui extends HBox {
 //      Setup gui elemets
         Text titleText = new Text("PJESKIEM I \n \t MIECZEM \n");
         titleText.setFont(Font.font("Z003",50));
-        ImageButton startButton = new ImageButton("New game", buttonWidth, buttonHeight, "buttons/button6.gif");
-        ImageButton loadButton = new ImageButton("Load game", buttonWidth, buttonHeight, "buttons/button6.gif");
-        ImageButton leaderboardButton = new ImageButton("Leaderboard", buttonWidth, buttonHeight, "buttons/button6.gif");
-        ImageButton exitButton = new ImageButton("Exit czcionka 0123;", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton startButton = new ImageButton("Nowa gra", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton loadButton = new ImageButton("Wczytaj grę", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton leaderboardButton = new ImageButton("Hala sławy", buttonWidth, buttonHeight, "buttons/button6.gif");
+        ImageButton exitButton = new ImageButton("Wyjdź :((", buttonWidth, buttonHeight, "buttons/button6.gif");
 
 //        Setup events
         startButton.setOnAction((event)->{

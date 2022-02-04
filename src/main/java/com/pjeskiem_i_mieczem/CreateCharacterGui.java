@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
+import java.util.Objects;
+
 public class CreateCharacterGui extends VBox {
     private Image classImage;
     private ImageView classImageView = new ImageView();
@@ -58,7 +60,16 @@ public class CreateCharacterGui extends VBox {
         continueButton.setOnAction((event)->{
             Player newPlayer = classPresets[Math.abs(current_class)];
             newPlayer.setName(characterNameField.getText());
+            if (Objects.equals(newPlayer.name, "Bernard") || Objects.equals(newPlayer.name, "bernard")){
+                newPlayer.endurance.setValue(100);
+                newPlayer.luck.setValue(100);
+                newPlayer.dexterity.setValue(100);
+                newPlayer.strength.setValue(100);
+                newPlayer.intelligence.setValue(100);
+                app.activateEasterEgg();
+            }
             Application.player = newPlayer;
+
             app.goToTheCity();
         });
 

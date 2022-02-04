@@ -1,5 +1,6 @@
 package com.pjeskiem_i_mieczem;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -35,13 +36,15 @@ public class TrainingGui extends VBox {
         int cityButtonWidth = (int) (Config.windowWidth * 0.2);
         int cityButtonHeight = (int) (Config.windowWidth * 0.05);
         ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button6.gif");
+        cityButton.setTranslateY(20);
         availablePointsLabel = new Label("Masz do wykorzystania: "+Application.player.skillPoints+" punktów");
+        availablePointsLabel.setTranslateY(-Config.windowHeight*0.03);
         availablePointsLabel.setFont(Font.font("Z003",25));
 
         VBox allStats = allStatsBox();
 
 //      Create a container and add everything
-        VBox container = new VBox(20);
+        VBox container = new VBox(8);
         container.setAlignment(Pos.CENTER);
         container.getChildren().addAll(titleText, playerImageView, availablePointsLabel, allStats, cityButton);
         this.setAlignment(Pos.CENTER);
@@ -88,7 +91,7 @@ public class TrainingGui extends VBox {
     }
 
     private VBox allStatsBox(){
-        VBox box = new VBox(12);
+        VBox box = new VBox(2);
         HBox statStrength = singleStatsBox(Application.player.strength);
         HBox statIntelligence = singleStatsBox(Application.player.intelligence);
         HBox statDexterity = singleStatsBox(Application.player.dexterity);

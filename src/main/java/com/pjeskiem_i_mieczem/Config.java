@@ -5,7 +5,7 @@ public class Config {
     public static int windowHeight = 720;
 
 //    Balance modifiers
-    public static final double expModifier = 100;
+    public static final double expModifier = 1000;
     public static final double damageModifier = 0.3;
     public static final double goldModifier = 1;
 //    What is the lowes amount of skill points enemy generator has to spend in reference to player level

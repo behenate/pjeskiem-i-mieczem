@@ -85,7 +85,8 @@ public abstract class Player implements Serializable {
 
     public VBox getPlayerCard(int width) {
         Label playerNameLabel = new Label(name);
-        playerNameLabel.setStyle("-fx-font-size: 50; -fx-text-fill: #7efdfd");
+
+        playerNameLabel.setStyle("-fx-font-size: 50; -fx-text-fill: #070000; -fx-background-color: rgba(255,255,255, 0.9)");
         StatBar healthBar = new StatBar("#f7573e", true, width - 10 ,
                 (int) (Config.windowHeight * 0.05), (float) maxHp.getValue(), (float) hp.getValue(),"#f2afa5");
         Node statCard = getStatsView();

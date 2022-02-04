@@ -19,7 +19,7 @@ public class Mage extends Player{
     }
     private void updateStatDescriptions(){
         this.strength.setDescription("Dodaje 1pkt odporności przeciwko wojownikowi");
-        this.endurance.setDescription("Dodaje +5 punktów życia");
+        this.endurance.setDescription("Dodaje +7 punktów życia");
         this.dexterity.setDescription("Dodaje 1pkt odporności przeciwko łowcy");
         this.intelligence.setDescription("Dodaje 1pkt odporności przeciwko magowi, dodaje +20 punktów obrażeń");
         this.luck.setDescription("Zwiększa obrażenia o 1% (max 100%)");
