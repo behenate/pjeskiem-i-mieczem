@@ -4,3 +4,5 @@ Bernio;536
 Zuzinka;764
 Zuzinka;532
 Pjese³;622
+Zuzek;557
+Alka;570

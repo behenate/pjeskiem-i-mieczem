@@ -40,7 +40,6 @@ public class Hunter extends Player {
         if (Math.random() > dodge_chance) {
             hp.setValue(hp.getValue() - dmg * Config.damageModifier);
         } else {
-            System.out.println("Dodge!");
             playDodgeAnimation();
         }
     }

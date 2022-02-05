@@ -22,7 +22,6 @@ public class CityViewGui extends VBox {
         this.app = app;
         makeGrid();
         this.getChildren().addAll(grid);
-        this.setBack();
     }
 
     private void makeGrid(){
@@ -31,6 +30,7 @@ public class CityViewGui extends VBox {
         this.setPrefHeight(Config.windowHeight);
         int buttonWidth = (int) (Config.windowWidth*0.13);
         int buttonHeight = (int)(Config.windowHeight*0.05);
+        Tools.setBack(this, "backgrounds/cityView.gif");
 
 //      setup grid
         for(int i = 0; i < 30; i++){
@@ -130,19 +130,5 @@ public class CityViewGui extends VBox {
             Application.player.gold -= 10;
             Application.player.hp.setValue(Math.min(Application.player.maxHp.getValue(), Application.player.hp.getValue()+boost));
         }
-    }
-    private void setBack(){
-        BackgroundSize backgroundSize = new BackgroundSize(900,
-                700,
-                true,
-                true,
-                true,
-                false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/cityView.gif"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
-        this.setBackground(new Background(image));
     }
 }
