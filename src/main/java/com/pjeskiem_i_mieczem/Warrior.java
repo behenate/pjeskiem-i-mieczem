@@ -8,13 +8,16 @@ public class Warrior extends Player{
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
         updateStatDescriptions();
     }
+
+//  A simpler constructor creating an opponent for a fight
     public Warrior(){
         super("Wojownik",8,6,2,1,3, "characters/warrior.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*10);
         this.hp = new Statistic("Hp", this.endurance.getValue()*10);
-//        this.currentHp = new Statistic("Hp", 30);
         updateStatDescriptions();
     }
+
+//  Setting a comment for every stat, making training easier
     private void updateStatDescriptions(){
         this.strength.setDescription("Dodaje 1pkt odporności przeciwko wojownikowi, dodaje +10 punktów obrażeń");
         this.endurance.setDescription("Dodaje +10 punktów życia");
@@ -23,11 +26,13 @@ public class Warrior extends Player{
         this.luck.setDescription("Zwiększa obrażenia o 1% (max 100%)");
     }
 
+//  Making damage from the opponent during the fight
     @Override
     public double getDamage() {
         return this.strength.getValue() * 10 + luck.getValue();
     }
 
+//  Taking damage; being hurt during the fight
     @Override
     public void takeDamage(Player other) {
         double mage_reduction = (other instanceof Mage) ? intelligence.getValue() :0;

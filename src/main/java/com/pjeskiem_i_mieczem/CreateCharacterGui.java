@@ -34,12 +34,12 @@ public class CreateCharacterGui extends VBox {
         Tools.setBack(this, "backgrounds/createCharacterViewBig.gif");
 
 //        Setup gui elemets
-
         Label characterNameLabel = new Label("Wybierz imje pjesa ");
         TextField characterNameField = new TextField();
         Tools.addTextLimiter(characterNameField, 12);
         characterNameField.setText("Pjeseł");
 
+//        Setup buttons
         ImageButton prevClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_left.gif");
         ImageButton nextClassButton = new ImageButton("", arrowButtonSize, arrowButtonSize, "buttons/mini_arrow_right.gif");
         ImageButton continueButton = new ImageButton("Graj Pjesem",navigationButtonWidth,navigationButtonHeight, "buttons/button6.gif" );
@@ -53,7 +53,7 @@ public class CreateCharacterGui extends VBox {
             current_class = (current_class + 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
-//      creating a new player
+//      Creating a new player
         continueButton.setOnAction((event)->{
             Player newPlayer = classPresets[Math.abs(current_class)];
             newPlayer.setName(characterNameField.getText());
@@ -66,7 +66,6 @@ public class CreateCharacterGui extends VBox {
                 app.activateEasterEgg();
             }
             Application.player = newPlayer;
-
             app.goToTheCity();
         });
 
@@ -84,10 +83,10 @@ public class CreateCharacterGui extends VBox {
         buttonsAndClassnameContainer.setMinHeight(navigationButtonHeight+10);
         classImageView.setFitWidth(classImageSize);
         classImageView.setFitHeight(classImageSize);
-
         characterNameField.setMaxWidth(prefWidth);
         classNameLabel.setPrefWidth(prefWidth - 2*arrowButtonSize);
         characterNameField.setFont(Font.font(Config.windowWidth*0.012));
+
 //      Setup alignments
         container.setAlignment(Pos.CENTER);
         statsBox.setAlignment(Pos.CENTER);
@@ -110,6 +109,7 @@ public class CreateCharacterGui extends VBox {
         this.getStylesheets().add(getClass().getResource("/stylesheets/main.css").toExternalForm());
         this.getChildren().add(container);
 
+//        Showing proper character
     }
     private void setCharacter(Player character){
         classImageView.setImage(character.idleImage);

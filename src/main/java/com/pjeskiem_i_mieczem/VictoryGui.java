@@ -6,8 +6,9 @@ import javafx.scene.layout.*;
 
 
 public class VictoryGui extends VBox{
+
     public VictoryGui(Application main){
-//      Setup size
+//      Setup sizes and background
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowHeight);
         int buttonWidth = (int) (Config.windowWidth*0.3);

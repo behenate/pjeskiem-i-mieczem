@@ -17,22 +17,24 @@ public class TrainingGui extends VBox {
     private final Label availablePointsLabel;
     private final Application app;
     private final Robot robot = new Robot();
+
     public TrainingGui(Application app){
         this.app = app;
-//      Setup sizes
+
+//      Setup sizes and background
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
         int imageSize = (int)(Config.windowHeight*0.3);
+        int cityButtonWidth = (int) (Config.windowWidth * 0.2);
+        int cityButtonHeight = (int) (Config.windowWidth * 0.05);
         Tools.setBack(this, "backgrounds/training.gif");
+
 //      Setup gui elements
         Text titleText = new Text("Ulepsz swoją postać " + Application.player.name);
-
         ImageView playerImageView = Application.player.imageView;
         playerImageView.setFitWidth(imageSize);
         playerImageView.setFitHeight(imageSize);
 
-        int cityButtonWidth = (int) (Config.windowWidth * 0.2);
-        int cityButtonHeight = (int) (Config.windowWidth * 0.05);
         ImageButton cityButton = new ImageButton("Wróć do miasta", cityButtonWidth, cityButtonHeight, "buttons/button6.gif");
         cityButton.setTranslateY(20);
         availablePointsLabel = new Label("Masz do wykorzystania: "+Application.player.skillPoints+" punktów");
@@ -48,13 +50,14 @@ public class TrainingGui extends VBox {
         this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(container);
 
-//      Setup action of going to the city (without changing window)
+//      Setup action of going to the city
         cityButton.setOnAction((event)->{
             Application.player.recalculateHp();
             app.goToTheCity();
         });
     }
 
+//  Function creating single line with a stat name and value
     private HBox singleStatsBox(Statistic stat){
         HBox box = new HBox(10);
 //      Setup labels
@@ -64,6 +67,8 @@ public class TrainingGui extends VBox {
         valueLabel.setMinWidth(40);
         nameLabel.setFont(Font.font(16));
         valueLabel.setFont(Font.font(16));
+
+//      Setup of a popup with info
         Popup popup = new Popup();
         popup.getContent().addAll(new ImageButton(stat.getDescription(), stat.getDescription().length()*8, 100, "buttons/infoPopupLong.gif"));
         popup.getContent().get(0).setStyle("-fx-font-size: 15");
@@ -72,6 +77,7 @@ public class TrainingGui extends VBox {
             popup.setY(robot.getMouseY()-50);
             popup.show(app.stage);
         };
+
 //      Setup button and its action
         ImageButton improveButton = new ImageButton("", plusButtonWidth, plusButtonHeight, "buttons/plus_icon.gif", showPopup, popup::hide );
         improveButton.setOnAction((event)->{
@@ -88,6 +94,7 @@ public class TrainingGui extends VBox {
         return box;
     }
 
+//  Function creating a box with all stats
     private VBox allStatsBox(){
         VBox box = new VBox(2);
         HBox statStrength = singleStatsBox(Application.player.strength);

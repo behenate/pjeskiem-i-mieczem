@@ -1,7 +1,6 @@
 package com.pjeskiem_i_mieczem;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.robot.Robot;
 import javafx.scene.text.Font;
@@ -25,7 +24,7 @@ public class CityViewGui extends VBox {
     }
 
     private void makeGrid(){
-//      Setup sizes
+//      Setup sizes and background
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowHeight);
         int buttonWidth = (int) (Config.windowWidth*0.13);
@@ -44,6 +43,7 @@ public class CityViewGui extends VBox {
         Text titleText = new Text("Witaj w pjeskowie!");
         titleText.setFont(Font.font("Z003",50));
 
+//      Setup player's stats placed on the screen
         if(Application.player != null){
             gold = new Text("Twój stan konta to: "+Application.player.getGold()+" $$");
             gold.setFont(Font.font("Z003",20));
@@ -68,6 +68,7 @@ public class CityViewGui extends VBox {
         ImageButton menuButton = new ImageButton("Idź do menu", buttonWidth, buttonHeight,
                 "buttons/arrow_left.gif");
 
+//        setup popup message
         Popup cashPopup = new Popup();
         cashPopup.getContent().addAll(new ImageButton("10 $$", 100, 60, "buttons/dymek.gif"));
 
@@ -88,7 +89,7 @@ public class CityViewGui extends VBox {
         trainingButton.setMinWidth(buttonWidth);
         menuButton.setMinWidth(buttonWidth);
 
-//      Setup buttons actions
+//      Setup buttons' actions
         arenaButton.setOnAction((event)->{
             app.goToTheArena();
         });
@@ -96,12 +97,10 @@ public class CityViewGui extends VBox {
             this.chillOut();
             this.gold.setText("Twój stan konta to: "+Application.player.getGold()+" $$");
             this.healthBar.updateBar((float) Application.player.hp.getValue());
-
         });
         trainingButton.setOnAction((event)->{
             app.goToTheTraining();
         });
-
         menuButton.setOnAction((event)->{
             try {
                 FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");
@@ -113,7 +112,7 @@ public class CityViewGui extends VBox {
             Application.player.saveProgress();
             app.goToTheStart();
         });
-        //grid.setGridLinesVisible(true);
+
 //      add elements to grid
         grid.add(titleText, 14, 1, 1, 2);
         grid.add(arenaButton, 6, 11, 2, 1);
@@ -124,6 +123,7 @@ public class CityViewGui extends VBox {
         trainingButton.setTranslateX(-4);
     }
 
+//  function for healing, filling hp bar
     private void chillOut(){
         int boost = 10;
         if(Application.player.hp.getValue() < Application.player.maxHp.getValue()){

@@ -7,7 +7,7 @@ public class FailureGui extends VBox {
     private final LeaderboardGui leaderboardGui;
 
     public FailureGui(LeaderboardGui leaderboard, Application app){
-//      Setup size
+//      Setup size and background
         this.leaderboardGui = leaderboard;
         this.setPrefWidth(Config.windowWidth);
         this.setPrefHeight(Config.windowWidth);
@@ -16,10 +16,10 @@ public class FailureGui extends VBox {
         Tools.setBack(this, "backgrounds/failure.gif");
 
 //      Setup labels
-        Label titleText = new Label("Przegraaaaaałeś");
+        Label titleText = new Label("Przegraaaałeś");
         Label scoreLabel = new Label("Twój wynik to: " + Application.player.getGold());
 
-//      Setup buttons
+//      Setup buttons and their actions
         ImageButton saveButton = new ImageButton("Zapisz wynik", buttonWidth, buttonHeight, "buttons/button6.gif");
         saveButton.setOnAction((event)->{
             leaderboardGui.saveToLeaderboard();

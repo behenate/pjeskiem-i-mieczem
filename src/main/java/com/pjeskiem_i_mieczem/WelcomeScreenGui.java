@@ -4,10 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.io.*;
 
-// Class containing the Gui of the welcome screen
 public class WelcomeScreenGui extends HBox {
     public WelcomeScreenGui(Application app){
 
@@ -26,7 +24,7 @@ public class WelcomeScreenGui extends HBox {
         ImageButton leaderboardButton = new ImageButton("Hala sławy", buttonWidth, buttonHeight, "buttons/button6.gif");
         ImageButton exitButton = new ImageButton("Wyjdź :((", buttonWidth, buttonHeight, "buttons/button6.gif");
 
-//        Setup events
+//      Setup buttons' events
         startButton.setOnAction((event)->{
             try {
                 FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");
@@ -57,13 +55,14 @@ public class WelcomeScreenGui extends HBox {
             System.exit(0);
         });
 
-//        Add the gui elements to containers and base class
+//      Add the gui elements to a container
         VBox container = new VBox(titleText, startButton, loadButton, leaderboardButton, exitButton);
         container.setAlignment(Pos.CENTER);
         this.getChildren().add(container);
         this.setAlignment(Pos.CENTER);
     }
 
+//  Function for reloading player form a file
     public Player reloadPlayer(String filePath) {
         try {
             FileInputStream file = new FileInputStream(filePath);
