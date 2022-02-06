@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class Fight implements Runnable{
     private FightGui gui;
-
     private Player p2;
     private Application app;
 
@@ -21,7 +20,7 @@ public class Fight implements Runnable{
     public void run() {
 //        Two players that will fight
         Player[] players = {Application.player,p2};
-        int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);;
+        int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);
 //        Flip enemy image
         p2.flipImageView();
 //        Alternate between players, take damage from each based on stats until one loses
@@ -40,9 +39,7 @@ public class Fight implements Runnable{
                 current_player_idx = (current_player_idx + 1)%2;
 
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
-                Platform.runLater(()->{
-                    gui.updateFightGui();
-                });
+                Platform.runLater(()-> gui.updateFightGui());
                 if (other_player.hp.getValue() == 0){
                     Thread.sleep(1000);
                     if (other_player == Application.player){
