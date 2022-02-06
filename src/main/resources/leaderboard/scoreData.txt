@@ -6,3 +6,6 @@ Zuzinka;532
 Pjese³;622
 Zuzek;557
 Alka;570
+fru;635
+Zuzik;345
+Wojtuœ;1543

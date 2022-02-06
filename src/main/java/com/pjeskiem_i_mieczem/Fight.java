@@ -25,7 +25,11 @@ public class Fight implements Runnable{
 //        Flip enemy image
         p2.flipImageView();
 //        Alternate between players, take damage from each based on stats until one loses
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         while(true){
             try {
                 Player current_player = players[current_player_idx];
