@@ -21,7 +21,7 @@ public class Fight implements Runnable{
     public void run() {
 //        Two players that will fight
         Player[] players = {Application.player,p2};
-        int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);;
+        int current_player_idx = ThreadLocalRandom.current().nextInt(0, 1 + 1);
 //        Flip enemy image
         p2.flipImageView();
 //        Alternate between players, take damage from each based on stats until one loses
@@ -30,15 +30,15 @@ public class Fight implements Runnable{
             try {
                 Player current_player = players[current_player_idx];
                 Player other_player = players[(current_player_idx+1)%2];
+
+//                Wait 1 second between each move
                 Thread.sleep(1000);
                 current_player.playAttackAnimation(400);
                 other_player.takeDamage(current_player);
                 current_player_idx = (current_player_idx + 1)%2;
 
                 other_player.hp.setValue(Math.max(other_player.hp.getValue(),0));
-                Platform.runLater(()->{
-                    gui.updateFightGui();
-                });
+                Platform.runLater(()-> gui.updateFightGui());
                 if (other_player.hp.getValue() == 0){
                     Thread.sleep(1000);
                     if (other_player == Application.player){
@@ -65,6 +65,7 @@ public class Fight implements Runnable{
 
         }
     }
+//    Function to clear the save file
     private void clearFile() {
         try {
             FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");

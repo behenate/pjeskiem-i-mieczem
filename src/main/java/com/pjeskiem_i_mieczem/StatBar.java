@@ -46,6 +46,7 @@ public class StatBar extends HBox{
         this.setMaxWidth(this.width);
         this.getChildren().add(bar);
     }
+//    Updates bar width based on current parameter value
     public void updateBar(double currentValue){
         bar.setPrefWidth(Math.min(1, currentValue/maxValue)* this.width);
         if (showText){

@@ -13,7 +13,7 @@ public class FightGui extends VBox {
     public FightGui(Player characterDos){
         this.player2 = characterDos;
         Text titleText = new Text("Bitwa!");
-        titleText.setFont(Font.font("Monotype Corsiva", 50));
+        titleText.setFont(Font.font(50));
 
         cardsContainer.setAlignment(Pos.CENTER);
         cardsContainer.setSpacing(Config.windowWidth*0.25);
