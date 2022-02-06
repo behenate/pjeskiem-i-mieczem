@@ -12,8 +12,7 @@ import javafx.scene.text.Font;
 import java.util.Objects;
 
 public class CreateCharacterGui extends VBox {
-    private Image classImage;
-    private ImageView classImageView = new ImageView();
+    private final ImageView classImageView = new ImageView();
     private final VBox statsBox = new VBox();
     private final Label classNameLabel = new Label();
     private int current_class = 0;
@@ -32,6 +31,7 @@ public class CreateCharacterGui extends VBox {
         int navigationButtonHeight = (int)(Config.windowHeight*0.05);
         int classImageSize = (int)(Config.windowHeight*0.3);
         int prefWidth = (int)(Config.windowWidth*0.2);
+        Tools.setBack(this, "backgrounds/createCharacterViewBig.gif");
 
 //        Setup gui elemets
 
@@ -46,12 +46,10 @@ public class CreateCharacterGui extends VBox {
 
 //        Setup events
         prevClassButton.setOnAction((event)->{
-            System.out.println("Previous Class!");
             current_class = (current_class - 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
         nextClassButton.setOnAction((event)->{
-            System.out.println("Next Class!");
             current_class = (current_class + 1) % classPresets.length;
             setCharacter(classPresets[Math.abs(current_class)]);
         });
@@ -110,28 +108,13 @@ public class CreateCharacterGui extends VBox {
 
 //        Setup font stylesheet
         this.getStylesheets().add(getClass().getResource("/stylesheets/main.css").toExternalForm());
-
         this.getChildren().add(container);
-        setBack();
+
     }
     private void setCharacter(Player character){
         classImageView.setImage(character.idleImage);
         classNameLabel.setText(character.className);
         statsBox.getChildren().clear();
         statsBox.getChildren().add(character.getStatsView());
-    }
-    private void setBack(){
-        BackgroundSize backgroundSize = new BackgroundSize(1920,
-                1080,
-                true,
-                true,
-                true,
-                false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/createCharacterViewBig.gif"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
-        this.setBackground(new Background(image));
     }
 }

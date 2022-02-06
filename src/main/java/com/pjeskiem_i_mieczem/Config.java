@@ -5,7 +5,7 @@ public class Config {
     public static int windowHeight = 720;
 
 //    Balance modifiers
-    public static final double expModifier = 100;
+    public static final double expModifier = 1;
     public static final double damageModifier = 0.3;
     public static final double goldModifier = 1;
 //    What is the lowes amount of skill points enemy generator has to spend in reference to player level
@@ -17,6 +17,7 @@ public class Config {
 //    On level 2 you need 1.1*levelForLevelTwo experience etc.
     public static final double expModifierOffset = 0.1;
 //  How much of the required exp you actually need to have in order to level up
+//  Default value is 1
     public static final double expCurveModifier = 1;
 }
 

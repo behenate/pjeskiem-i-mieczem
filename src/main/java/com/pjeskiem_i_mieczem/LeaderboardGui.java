@@ -2,7 +2,6 @@ package com.pjeskiem_i_mieczem;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -19,7 +18,7 @@ public class LeaderboardGui extends VBox {
         this.setPrefHeight(Config.windowWidth);
         int buttonWidth = (int) (Config.windowWidth*0.3);
         int buttonHeight = (int)(Config.windowHeight*0.1);
-        this.setBack();
+        Tools.setBack(this, "backgrounds/leaderboard.gif");
 
 //      Setup gui elemets
         Text titleText = new Text("Ranking \n");
@@ -87,19 +86,5 @@ public class LeaderboardGui extends VBox {
         } catch (IOException e) {
         e.printStackTrace();
         }
-    }
-    private void setBack(){
-        BackgroundSize backgroundSize = new BackgroundSize(900,
-                700,
-                true,
-                true,
-                true,
-                false);
-        BackgroundImage image = new BackgroundImage(new Image("backgrounds/leaderboard.gif"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
-        this.setBackground(new Background(image));
     }
 }

@@ -1,9 +1,11 @@
 Stasiu;10
-Adam;1000
-Maciek;1000
-MopsMarek;1000
+MopsMarek;333
 Bernio;536
 Zuzinka;764
-Pjese³;500
-Pjese³;781
-Pjese³;556
+Zuzinka;532
+Pjese³;622
+Zuzek;557
+Alka;570
+fru;635
+Zuzik;345
+Wojtuœ;1543
