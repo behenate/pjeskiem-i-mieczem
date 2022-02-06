@@ -33,6 +33,8 @@ public class Fight implements Runnable{
             try {
                 Player current_player = players[current_player_idx];
                 Player other_player = players[(current_player_idx+1)%2];
+
+//                Wait 1 second between each move
                 Thread.sleep(1000);
                 current_player.playAttackAnimation(400);
                 other_player.takeDamage(current_player);
@@ -66,6 +68,7 @@ public class Fight implements Runnable{
 
         }
     }
+//    Function to clear the save file
     private void clearFile() {
         try {
             FileOutputStream writer = new FileOutputStream("src/main/resources/leaderboard/save");

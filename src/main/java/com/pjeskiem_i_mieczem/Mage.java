@@ -10,16 +10,18 @@ public class Mage extends Player{
         updateStatDescriptions();
     }
 
-
+//  Creates a mage class with default lvl one stats
     public Mage(){
         super("Mag",6,1,1,8,6, "characters/mage.gif");
         this.maxHp = new Statistic("Hp", this.endurance.getValue()*5);
         this.hp = new Statistic("Hp", this.endurance.getValue()*5);
         updateStatDescriptions();
     }
+
+//    Generates statistics descriptions
     private void updateStatDescriptions(){
         this.strength.setDescription("Dodaje 1pkt odporności przeciwko wojownikowi");
-        this.endurance.setDescription("Dodaje +7 punktów życia");
+        this.endurance.setDescription("Dodaje +5 punktów życia");
         this.dexterity.setDescription("Dodaje 1pkt odporności przeciwko łowcy");
         this.intelligence.setDescription("Dodaje 1pkt odporności przeciwko magowi, dodaje +20 punktów obrażeń");
         this.luck.setDescription("Zwiększa obrażenia o 1% (max 100%)");
@@ -28,6 +30,7 @@ public class Mage extends Player{
     public double getDamage() {
         return 20*intelligence.getValue() + luck.getValue();
     }
+//    Calculates the damage received from other player
     @Override
     public void takeDamage(Player other) {
         double mage_reduction = (other instanceof Mage) ? intelligence.getValue() :0;
@@ -37,7 +40,7 @@ public class Mage extends Player{
         hp.setValue(hp.getValue() - dmg*Config.damageModifier);
     }
     public void recalculateHp() {
-        super.recalculateHp(7);
+        super.recalculateHp(5);
     }
 
 }

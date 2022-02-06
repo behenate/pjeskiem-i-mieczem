@@ -821,6 +821,7 @@ public class NameGenerator {
             "Żywia",
     };
 
+//    Function that chooses a random name from the list above
     public static String generateName(){
         int rnd = new Random().nextInt(names.length);
         return names[rnd];

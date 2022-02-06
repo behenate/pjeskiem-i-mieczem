@@ -7,31 +7,25 @@ import javafx.stage.Popup;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Application extends javafx.application.Application {
+//    Setup the stage and the player class
     Stage stage;
     public static Player player;
     LeaderboardGui leaderboardGui = new LeaderboardGui(this);
+//    Easteregg flag
     private boolean easteregg = false;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage)  {
+//        Set the icon, launch the menu gui
         this.stage = stage;
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
 
-//        TrainingGui trainingGui = new TrainingGui(4, this);
-//        FailureGui failureGui = new FailureGui(leaderboardGui, this);
-//        VictoryGui victoryGui = new VictoryGui(this);
-
         Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
         scene.getStylesheets().add("/stylesheets/welcomeScreen.css");
+//        Block resizing of the window to avoid alignment problems
         this.stage.setResizable(false);
-//        Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
-//        Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
-        //Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
-//        Scene scene = new Scene(victoryGui);
         this.stage.setTitle("Pjeskiem I Mieczem");
         this.stage.setScene(scene);
         this.stage.show();
@@ -41,9 +35,11 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
+//    function that switches the application to the menu gui
     public void goToTheCity(){
         CityViewGui cityViewGui = new CityViewGui(this);
         Scene scene = new Scene(cityViewGui, Config.windowWidth, Config.windowHeight);
+//      Activate the easteregg
         if (easteregg){
             Popup popup = new Popup();
             ImageView imageView  =new ImageView(new Image("/backgrounds/easteregg_with_background.gif"));
@@ -57,11 +53,12 @@ public class Application extends javafx.application.Application {
             popup.show(this.stage);
 
         }
+//        Set style
         scene.getStylesheets().add("/stylesheets/main.css");
         this.stage.setScene(scene);
     }
 
-
+//       Function that sets up the fight and passes it to the fight gui and switches to it
     public void goToTheArena(){
         EnemyGenerator generator = new EnemyGenerator();
         Player enemy = generator.getEnemy();
@@ -75,6 +72,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that returns the player to main menu
     public void goToTheStart(){
         WelcomeScreenGui welcomeScreenGui = new WelcomeScreenGui(this);
         Scene scene = new Scene(welcomeScreenGui, Config.windowWidth, Config.windowHeight);
@@ -82,6 +80,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that switches the view to the Training
     public void goToTheTraining(){
         TrainingGui trainingGui = new TrainingGui(this);
         Scene scene = new Scene(trainingGui, Config.windowWidth, Config.windowHeight);
@@ -89,6 +88,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that switches to the leaderboard view
     public void goToTheLeaderboard(){
         LeaderboardGui leaderboardGui = new LeaderboardGui(this);
         Scene scene = new Scene(leaderboardGui, Config.windowWidth, Config.windowHeight);
@@ -96,6 +96,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that switches to the create character gui
     public void goToCreateCharacterGui(){
         CreateCharacterGui createCharacterGui = new CreateCharacterGui(this);
         Scene scene = new Scene(createCharacterGui, Config.windowWidth, Config.windowHeight);
@@ -103,6 +104,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that shows the failure screen
     public void goToFailureGui(){
         FailureGui failureGui = new FailureGui(leaderboardGui, this);
         Scene scene = new Scene(failureGui, Config.windowWidth, Config.windowHeight);
@@ -110,6 +112,7 @@ public class Application extends javafx.application.Application {
         this.stage.setScene(scene);
     }
 
+//    Function that switches to the victory screen
     public void goToVictoryGui(){
         VictoryGui victoryGui = new VictoryGui(this);
         Scene scene = new Scene(victoryGui, Config.windowWidth, Config.windowHeight);
