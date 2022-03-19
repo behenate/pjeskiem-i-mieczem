@@ -59,5 +59,5 @@ Instructions and the game UI are written in polish, because the course was lectu
 
 Aaaand here is a picture of us!
 
-<img src="desc_imgs\photo.png" alt="photo" width="30%"/>
+<img src="desc_imgs\photo.png" alt="photo" width="50%"/>
 
