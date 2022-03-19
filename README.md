@@ -8,7 +8,7 @@
 
 **In this very special repository, two warriors: Zuzia and Wojtek took a hard challenge to create a game (Shakes and Fidget and Swords and Sandals crossover) with doggos in the main role.**
 
-**Authors: **
+**Authors:**
 
 - *Zuzia* - Zuzanna Furtak - https://github.com/zfurtak
 - *Wojtek* - Wojciech Dróżdż - https://github.com/behenate
