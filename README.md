@@ -15,7 +15,7 @@
 
 
 
-*Pjeskiem i Mieczem* was created in `Java` usnig `JavaFX` UI library.
+*Pjeskiem i Mieczem* was created in `Java` using the `JavaFX` UI library.
 
 
 
